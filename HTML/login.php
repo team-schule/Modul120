@@ -24,6 +24,7 @@ if (isset ($_REQUEST["fehler"]))
         Kennwort: <input type="password" name="pwd" size="20"><br>
         <input type="submit" value="Login">
     </form>
+<input type=button onClick="location.href='registrieren.html'" value='Registrieren'>
 </body>
 
 </html>

@@ -27,7 +27,7 @@
     {
         echo "<input type=button onClick=\"location.href='login.php'\" value='Login'>";
     }
-    
+
     ?>
 
 
