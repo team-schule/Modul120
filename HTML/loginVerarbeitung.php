@@ -1,8 +1,8 @@
 <?php
 
+session_start ();
 include("db.inc.php");
 verbindung_mysql("Modul120");
-session_start ();
 
 
 $sql = "SELECT ".
@@ -17,13 +17,12 @@ $result = mysql_query ($sql);
 if (mysql_num_rows ($result) > 0)
 {
   // Benutzerdaten in ein Array auslesen.
-  $data = mysql_fetch_array ($result);
+   $data = mysql_fetch_array ($result);
 
   // Sessionvariablen erstellen und registrieren
-  $_SESSION["user_name"] = $data["benutzername"];
-  $_SESSION["user_type"] = $data["usertype"];
+  $_SESSION["userData"] = $data;
 
-  header ("Location: index.html");
+  header ("Location: index.php");
 }
 else
 {
