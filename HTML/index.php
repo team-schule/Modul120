@@ -48,25 +48,49 @@
     
     //********************************************************************************************************
     // Kategorien
+
+    echo "<h1>Kategorien</h1>";
     
-    $sql =
+    $katSql =
     "SELECT * ".
     "FROM kategorien";
 
-    $result = mysql_query ($sql);
+    $katResult = mysql_query ($katSql);
 
 
     $kategorienRows = array();
 
-    while(($kategorienRows = mysql_fetch_array($result)))
+    while(($kategorienRows = mysql_fetch_array($katResult)))
     {
-        $rows[] = $kategorienRows;
+        $katRows[] = $kategorienRows;
     }
     
-    foreach($rows as $key=> $item)
+    foreach($katRows as $key=> $item)
     {
-        echo "<li><a href='#'>" . $rows[$key]["KATEGORIE_TEXT"] . "</a></li>";
+        echo "<li><a href='#'>" . $katRows[$key]["KATEGORIE_TEXT"] . "</a></li>";
     }
+    //********************************************************************************************************
+    // Inserate
+
+    echo "<h1>Inserate</h1>";
+
+    $insSql =
+    "SELECT * ".
+    "FROM inserate";
+
+    $insResult = mysql_query ($insSql);
+
+    while(($inserateRows = mysql_fetch_array($insResult)))
+    {
+        $insRows[] = $inserateRows;
+    }
+
+    foreach($insRows as $key=> $item)
+    {
+        echo "<li><a href='#'>" . $insRows[$key]["TITEL"] . "</a></li>";
+    }
+
+
     //********************************************************************************************************
     
     ?>
