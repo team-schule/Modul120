@@ -142,21 +142,23 @@ if(isset($_POST['add']))
 {
 $timestamp = time();
 $datum = date("y.m.d", $timestamp);
-  $eintrag = "INSERT INTO users (ERFASST_AM, LETZTE_AKTIVITAT, VORNAME, NACHNAME, TOTAL_INSERATE, TOTAL_AUSGABEN, TOTAL_ERTRAG, LOGIN_UID, LOGIN_PWD)
-  			VALUES ('$datum', '$datum', '$_POST[vorname]', '$_POST[nachname]', '0', '0.00', '0.00', '$_POST[benutzername]', '$_POST[password]')";
-        "INSERT INTO adressen (STRASSE, PLZ, ORT, EMAIL, MOBILE) VALUES ('$_POST[strasse]', '$_POST[plz]', '$_POST[ort]', '$_POST[email]', '000 000 00 00')";
+  $eintrag = "INSERT INTO users (VORNAME, NACHNAME, EMAIL, MOBILE, ERFASST_AM, LETZTE_AKTIVITAT, TOTAL_INSERATE,TOTAL_AUSGABEN, TOTAL_ERTRAG, BENUTZERNAME, PASSWORT)
+  			         VALUES ('$_POST[vorname]', '$_POST[nachname]', '$_POST[email]', '000 000 00 00','$datum', '$datum', '0', '0.00', '0.00', '$_POST[benutzername]', '$_POST[password]')";
+
+
 
 
   		$result = mysql_query($eintrag);
   			if ($result > 0)
   			{
-        echo "Datensatz wurde erfasst <br>";
+          
   			}
   			else
   			{
   			echo "Error <br>";
   			}
-
+        $eintrag2 ="INSERT INTO adressen (USER_ID, ADRESSTYP_ID, STRASSE,PLZ, ORT)
+                      VALUES ('13','1','$_POST[strasse]', '$_POST[plz]', '$_POST[ort]')";
 
 
 }

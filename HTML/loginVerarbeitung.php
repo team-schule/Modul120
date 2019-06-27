@@ -10,8 +10,8 @@ $sql = "SELECT ".
   "FROM ".
     "users ".
   "WHERE ".
-    "(LOGIN_UID like '".$_REQUEST["name"]."') AND ".
-    "(LOGIN_PWD = '". ($_REQUEST["pwd"])."')";
+    "(BENUTZERNAME like '".$_REQUEST["name"]."') AND ".
+    "(PASSWORT = '". ($_REQUEST["pwd"])."')";
 $result = mysql_query ($sql);
 
 if (mysql_num_rows ($result) > 0)

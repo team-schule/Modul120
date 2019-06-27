@@ -29,7 +29,7 @@
         $userData = $_SESSION["userData"];
 
         echo
-        "<li><a href='#'>" . $userData["LOGIN_UID"] . "</a>
+        "<li><a href='#'>" . $userData["BENUTZERNAME"] . "</a>
             <ul>
                 <li><a href='#'>Meine Artikel</a></li>
                 <li><a href='#'>Wunschliste</a></li>
@@ -93,7 +93,7 @@
 
 
     //********************************************************************************************************
-    
+
     ?>
 
 
