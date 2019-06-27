@@ -151,17 +151,48 @@ $datum = date("y.m.d", $timestamp);
   		$result = mysql_query($eintrag);
   			if ($result > 0)
   			{
-          
+          //  header ("Location: index.php");
   			}
   			else
   			{
   			echo "Error <br>";
   			}
-        $eintrag2 ="INSERT INTO adressen (USER_ID, ADRESSTYP_ID, STRASSE,PLZ, ORT)
-                      VALUES ('13','1','$_POST[strasse]', '$_POST[plz]', '$_POST[ort]')";
 
 
+
+                      $sql = "SELECT ".
+                          "USER_ID ".
+                        "FROM ".
+                          "users ".
+                        "WHERE ".
+                          "(BENUTZERNAME like '".$_POST["benutzername"]."') AND ".
+                          "(PASSWORT = '". ($_POST["password"])."')";
+
+                          $result = mysql_query ($sql);
+                          $data = mysql_fetch_array ($result);
+
+                          $userid = $data["USER_ID"];
+                          $strasse = $_POST["strasse"];
+                          $plz = $_POST["plz"];
+                          $ort = $_POST["ort"];
+
+                $eintrag2 =          "INSERT INTO adressen (USER_ID, ADRESSTYP_ID, STRASSE, PLZ, ORT)
+                                        VALUES ('$userid', '1', '$strasse', '$plz', '$ort')";
+
+          $result2 = mysql_query($eintrag2);
+          if ($result2 > 0)
+          {
+            header ("Location: login.php");
+          }
+          else
+          {
+          echo "Error <br>";
+          }
 }
+
+
+
+
 
 
 
