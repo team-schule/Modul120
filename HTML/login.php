@@ -1,13 +1,10 @@
 <?php
-include("db.inc.php");
+    include("db.inc.php");
+    include("header.html");
 ?>
 
 <?php session_start (); ?>
-<html>
 
-<head>
-    <title>Login</title>
-    <meta charset="utf-8">
 
     <style>
     input[type=password],
@@ -42,15 +39,10 @@ include("db.inc.php");
     background-color: #45a049;
   }
 
-  div {
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    padding: 20px;
-  }
     </style>
-</head>
 
-<body>
+
+
 
     <?php
       if (isset ($_REQUEST["fehler"]))
@@ -58,8 +50,8 @@ include("db.inc.php");
           echo "<h2>Die Zugangsdaten waren ungültig.</h2>";
       }
     ?>
-    <div>
-    <h1>Benutzerlogin</h1>
+    
+<div>
     <form action="loginVerarbeitung.php" method="post">
         <p><input type="text" name="name" placeholder="Benutzername..." required></p>
         <p><input type="password" name="pwd" placeholder="Kennwort..." required></p>
@@ -67,6 +59,7 @@ include("db.inc.php");
     </form>
       <p><input type=button onClick="location.href='registrieren.php'" value='Registrieren'></p>
 </div>
-</body>
 
-</html>
+<?php
+    include("footer.html");
+?>
