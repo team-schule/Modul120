@@ -2,31 +2,46 @@
 
 body {
     background-color : #89E1E9;
+
 }
+
+
 
 h1 {
     color: gold;
-  position: fixed;
+  position: absolute;
   left: 300px;
-    top: 2px;
+  top: 20px
+
 }
 h2 {
     color: white;
-  position: fixed;
+  position: absolute;
   left: 300px;
-    top: 35px;
+  top: 80px;
 }
 
 header {
+  position: relative;
     background-color: rgb(59, 172, 183);
     border-radius: 10px;
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    top: 0px;
+    margin: 0 auto;
 }
 
 footer{
     width: 100%;
     height: 80px;
     border-radius: 10px;
+<<<<<<< HEAD
     margin-right: 10px;
+=======
+    bottom: 0px;
+    margin: 0 auto;
+>>>>>>> 5afe75d54451c8a77077391d9900de93d9a700ff
     background-color: rgb(59, 172, 183);
      bottom: 0px;
   }
