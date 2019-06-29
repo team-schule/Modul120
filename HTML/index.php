@@ -3,6 +3,7 @@
 <?php
     session_start();
     include("db.inc.php");
+    include("header.html");
     verbindung_mysql("Modul120")
 ?>
 
@@ -15,9 +16,6 @@
 
 </head>
 
-<body>
-
-    <h1>Test Seite Projekt Modul120</h1>
 
     <?php
 
@@ -50,7 +48,7 @@
     //********************************************************************************************************
     // Kategorien
 
-    echo "<h1>Kategorien</h1>";
+    echo "<h4>Kategorien</h4>";
 
     $katSql =
     "SELECT * ".
@@ -66,14 +64,21 @@
         $katRows[] = $kategorienRows;
     }
 
+
+echo "<form action='index.php'>";
+echo "<select name='Kategorie' size='1'>";
     foreach($katRows as $key=> $item)
-    {
-        echo "<li><a href='#'>" . $katRows[$key]["KATEGORIE_TEXT"] . "</a></li>";
+    {        
+        
+        echo "<option value='" . $katRows[$key]["KATEGORIE_TEXT"] . "'>" . $katRows[$key]["KATEGORIE_TEXT"] . "</option>";
+
     }
+echo "</select>";
+echo "</form>";
     //********************************************************************************************************
     // Inserate
 
-    echo "<h1>Inserate</h1>";
+    echo "<h3>Inserate</h3>";
 
     $insSql =
     "SELECT * ".
@@ -95,8 +100,49 @@
     //********************************************************************************************************
 
     ?>
+    
+    <?php
+$sql = "SELECT TITEL, INHALT, ERFASST_AM, PREIS_START, ANGEZEIGT_VON, ANGEZEIGT_BIS from inserate";
 
+$abfrage = mysql_query($sql);
 
-</body>
+if( ! $abfrage)
+		{
+			echo "<p>Die SQL-Anweisung ist fehlgeschlagen...</p>";
+		}
 
-</html>
+echo "<table width='100%' border='1'>
+<tr>
+                <th>Titel</th>
+
+                <th>Inhalt</th>
+
+                <th>Startpreis</th>
+
+                <th>Angezeit von</th>
+                <th>Angezeit bis</th>
+              </tr>";
+
+    while ($zeile = mysql_fetch_array($abfrage))
+		{
+      echo "
+			<tr>
+
+                    <td>" .$zeile["TITEL"] ."</td>
+
+                    <td>" .$zeile["INHALT"] ."</td>
+
+                    <td>" .$zeile["PREIS_START"] ."</td>
+
+                    <td>" .$zeile["ANGEZEIGT_VON"] ."</td>
+                    <td>" .$zeile["ANGEZEIGT_BIS"] ."</td>
+                </tr>";
+
+		}
+		echo "</table>";
+
+?>
+
+<?php
+    include("footer.html");
+    ?>
