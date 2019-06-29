@@ -15,7 +15,7 @@
     <title>Projekt Modul120</title>
 
 </head>
-
+<main>
 
     <?php
 
@@ -75,29 +75,7 @@ echo "<select name='Kategorie' size='1'>";
     }
 echo "</select>";
 echo "</form>";
-    //********************************************************************************************************
-    // Inserate
-
-    echo "<h3>Inserate</h3>";
-
-    $insSql =
-    "SELECT * ".
-    "FROM inserate";
-
-    $insResult = mysql_query ($insSql);
-
-    while(($inserateRows = mysql_fetch_array($insResult)))
-    {
-        $insRows[] = $inserateRows;
-    }
-
-    foreach($insRows as $key=> $item)
-    {
-        echo "<li><a href='#'>" . $insRows[$key]["TITEL"] . "</a></li>";
-    }
-
-
-    //********************************************************************************************************
+   
 
     ?>
     
@@ -142,7 +120,7 @@ echo "<table width='100%' border='1'>
 		echo "</table>";
 
 ?>
-
+</main>
 <?php
     include("footer.html");
     ?>
