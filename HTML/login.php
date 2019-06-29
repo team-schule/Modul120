@@ -1,6 +1,5 @@
 <?php
-    include("db.inc.php");
-    include("header.html");
+include("db.inc.php");
 ?>
 
 <?php session_start (); ?>
@@ -38,20 +37,23 @@
   {
     background-color: #45a049;
   }
+  .footer{
+    height: 100%;
+  }
+
 
     </style>
 
 
-
-
     <?php
+    include("header.html");
       if (isset ($_REQUEST["fehler"]))
       {
-          echo "<h2>Die Zugangsdaten waren ungültig.</h2>";
+      echo "<script>alert('Anmeldung fehlgeschlage');</script>";
       }
     ?>
-    
-<div>
+    <div class="footer">
+    <h3>Benutzerlogin</h3>
     <form action="loginVerarbeitung.php" method="post">
         <p><input type="text" name="name" placeholder="Benutzername..." required></p>
         <p><input type="password" name="pwd" placeholder="Kennwort..." required></p>
@@ -59,7 +61,6 @@
     </form>
       <p><input type=button onClick="location.href='registrieren.php'" value='Registrieren'></p>
 </div>
-
 <?php
-    include("footer.html");
-?>
+include("footer.html");
+ ?>
