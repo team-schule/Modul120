@@ -61,6 +61,7 @@ echo "<br>";
 
 echo "
 <div>
+<h3>Registrieren</h3>
 <form action='registrieren.php' method='post'>
 
     <p><input type='radio' name='geschlecht' checked style='margin-left: 80px'> Herr
