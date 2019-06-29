@@ -1,4 +1,5 @@
-<html>
+
+
 <style>
   input[type=password],
   input[type=email],
@@ -48,22 +49,13 @@ input[type=submit]:hover {
   background-color: #45a049;
 }
 
-div {
-  border-radius: 5px;
-  background-color: #f2f2f2;
-  padding: 20px;
-}
-</style>
-<head>
-    <meta charset=utf-8>
-    <title>Registrieren</title>
-</head>
-<h1>Sich Kostenlos Registrieren</h1>
 
-<body>
+</style>
+
 <?php
 require_once("db.inc.php");
 verbindung_mysql("Modul120");
+include("header.html");
 
 echo "<br>";
 
@@ -197,5 +189,5 @@ $datum = date("y.m.d", $timestamp);
 
 
 mysql_close($verbindung);
-
+include("footer.html");
  ?>
