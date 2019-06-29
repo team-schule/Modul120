@@ -21,6 +21,18 @@ h2 {
   top: 80px;
 }
 
+h3 {
+    position:relative;
+    left: 80px;
+    text-shadow: 3px 2px red;
+    font-size: 50px;
+}
+
+h4 {
+    position:relative;
+    left: 80px;
+}
+
 header {
   position: relative;
     background-color: rgb(59, 172, 183);
