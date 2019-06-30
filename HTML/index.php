@@ -1,25 +1,21 @@
-<!DOCTYPE html>
+
 
 <?php
     session_start();
     include("db.inc.php");
-    include("header.html");
     verbindung_mysql("Modul120")
 ?>
 
-<html lang="en" dir="ltr">
-
-<head>
-
-    <meta charset="utf-8">
-    <title>Projekt Modul120</title>
-
-</head>
-<main>
+<style>
+  .footer{
+      position:absolute;
+    height: 100%;
+  }
+</style>
 
     <?php
 
-    //********************************************************************************************************
+   include("header.html"); //********************************************************************************************************
     // Login / Anmeldung
 
     if (isset($_SESSION["userData"]))
@@ -118,9 +114,10 @@ echo "<table width='100%' border='1'>
 
 		}
 		echo "</table>";
-
+     include("footer.html");
 ?>
-</main>
-<?php
-    include("footer.html");
-    ?>
+
+    
+
+   
+
