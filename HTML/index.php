@@ -7,10 +7,28 @@
 ?>
 
 <style>
-  .footer{
-      position:absolute;
-    height: 100%;
+  .anzeigefeld {
+      position:relative;
+      left:200px;
+      display: grid;
+      grid-template-columns: 300px 300px 300px 300px;
+      grid-gap: 10px;
+      padding: 10px;
   }
+    
+    .anzeigefeld > div {
+        width: 300px;
+        height: auto;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid black;
+  text-align: center;
+  font-size: 20px;
+}
+    
+    .bildinserat {
+        max-width: 200px;
+    }
+    
 </style>
 
     <?php
@@ -76,7 +94,7 @@ echo "</form>";
     ?>
 
     <?php
-$sql = "SELECT TITEL, INHALT, ERFASST_AM, PREIS_START, ANGEZEIGT_VON, ANGEZEIGT_BIS from inserate";
+$sql = "SELECT TITEL, BILD, INHALT, ERFASST_AM, PREIS_START, ANGEZEIGT_BIS from inserate";
 
 $abfrage = mysql_query($sql);
 
@@ -85,35 +103,35 @@ if( ! $abfrage)
 			echo "<p>Die SQL-Anweisung ist fehlgeschlagen...</p>";
 		}
 
-echo "<table width='100%' border='1'>
-<tr>
-                <th>Titel</th>
 
-                <th>Inhalt</th>
 
-                <th>Startpreis</th>
-
-                <th>Angezeit von</th>
-                <th>Angezeit bis</th>
-              </tr>";
+echo "<div class='anzeigefeld'>";
 
     while ($zeile = mysql_fetch_array($abfrage))
 		{
-      echo "
-			<tr>
+        if (!$zeile["BILD"]){
+            $bild = "Kein Bild vordhanden.";
+        }
+        else
+        {
+           $bild = "<img class='bildinserat' src='" .$zeile["BILD"] ."'>"; 
+        }
+        
+        
+      echo "<div><article>
 
-                    <td>" .$zeile["TITEL"] ."</td>
+                    <h5>" .$zeile["TITEL"] ."</h5>
+                    <p>$bild </p>
+                    
+                    <p>" .$zeile["INHALT"] ."</p>
+                    <p>" .$zeile["PREIS_START"] ." CHF</p>
 
-                    <td>" .$zeile["INHALT"] ."</td>
-
-                    <td>" .$zeile["PREIS_START"] ."</td>
-
-                    <td>" .$zeile["ANGEZEIGT_VON"] ."</td>
-                    <td>" .$zeile["ANGEZEIGT_BIS"] ."</td>
-                </tr>";
+                    <p>Endet am: " .$zeile["ANGEZEIGT_BIS"] ."</p>
+                    <p><input type='submit' name='detail' value='Zum Inserat'></input></p>
+                </article></div>";
 
 		}
-		echo "</table>";
+		echo "</div>";
      include("footer.html");
 ?>
 
