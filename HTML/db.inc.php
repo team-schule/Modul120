@@ -7,15 +7,16 @@
 		$verbindung = @mysql_connect($server, $user, $pass)
 			or die ("Keine Verbindung zum Server... <br>
 					Abbruch des Skripts.");
-		
+					mysql_set_charset('utf8',$verbindung);
+
 		//Wechsel in angegebene Datenbank
 		@mysql_select_db($datenbank)
-			or die ("Fehler beim Zugriff auf die Datenbank. <br> 
+			or die ("Fehler beim Zugriff auf die Datenbank. <br>
 					MySQL-Fehler: " .mysql_error() .".<br>
 					Abbruch des Skripts.");
-	}	
+	}
 	/*
-	Aufruf aus anderem Skript lokal z. B. mit: 
+	Aufruf aus anderem Skript lokal z. B. mit:
 		require_once("db.inc.php");
 		verbindung_mysql("bankleitzahlen");
 	Aufruf aus anderem Skript mit Internet-Beispieldaten:
