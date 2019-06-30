@@ -28,7 +28,7 @@
                 <li><a href='#'>Meine Artikel</a></li>
                 <li><a href='#'>Wunschliste</a></li>
                 <li><a href='#'>Blabla</a></li>
-                <li><a href='#'>Abmelden</a></li>
+                <li><a href='logout.php'>Abmelden</a></li>
             </ul>
         </li>";
     }
@@ -64,17 +64,17 @@
 echo "<form action='index.php'>";
 echo "<select name='Kategorie' size='1'>";
     foreach($katRows as $key=> $item)
-    {        
-        
+    {
+
         echo "<option value='" . $katRows[$key]["KATEGORIE_TEXT"] . "'>" . $katRows[$key]["KATEGORIE_TEXT"] . "</option>";
 
     }
 echo "</select>";
 echo "</form>";
-   
+
 
     ?>
-    
+
     <?php
 $sql = "SELECT TITEL, INHALT, ERFASST_AM, PREIS_START, ANGEZEIGT_VON, ANGEZEIGT_BIS from inserate";
 
