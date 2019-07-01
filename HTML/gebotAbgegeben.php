@@ -12,7 +12,6 @@
         position: relative;
         left: 0px;
         top: 0px;
-        text-shadow: 3px 2px red;
         font-size: 40px;
         text-align: center;
     }

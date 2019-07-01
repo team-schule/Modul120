@@ -83,7 +83,6 @@
         position: relative;
         left: 0px;
         top: 0px;
-        text-shadow: 3px 2px red;
         font-size: 40px;
     }
     
@@ -127,7 +126,7 @@
 </style>
 
 <!--Inserat-Kopf---------------------------------------------------------------------------------------------->
-<div class="container-1" >
+<div class="container-1">
 
     <div class="box-1">
         <img src='Bilder/Coming-Soon.png'>
@@ -138,17 +137,20 @@
 
         <table border="0" width="100%">
             <tr>
-            <td colspan="2">
-            <h3>
-                <?php echo $inserat["TITEL"]; ?>
-            </h3>
+                <td colspan="2">
+                    <h3>
+                        <?php echo $inserat["TITEL"]; ?>
+                    </h3>
                 </td>
             </tr>
             <tr>
-                <td colspan="2">Inserat-Dauer bis: <?php echo $inserat["ANGEZEIGT_BIS"]; ?>
+                <td colspan="2">Inserat-Dauer bis:
+                    <?php echo $inserat["ANGEZEIGT_BIS"]; ?>
             </tr>
             <tr>
-                <td colspan="2"><hr class="smallBorder"></td>
+                <td colspan="2">
+                    <hr class="smallBorder">
+                </td>
             </tr>
             <tr>
                 <td>Aktuelles Gebot</td>
@@ -159,15 +161,17 @@
             </tr>
             <tr>
                 <td colspan="2">Dein Nächstes Gebot</td>
-            </tr> 
+            </tr>
             <tr>
                 <td colspan="2"><input type='number' name='jahr' min='<?php echo $inserat["PREIS_START"] + 1; ?>' max='<?php echo $inserat["PREIS_ENDE"]; ?>' placeholder='next price*' style='width:100%' value='<?php echo $inserat["PREIS_START"] + 1; ?>'></td>
             </tr>
             <tr>
                 <td colspan="2"><input type=button onClick="location.href='gebotAbgegeben.php'" value='GEBOT ABGEBEN'></td>
             </tr>
-             <tr>
-                <td colspan="2"><hr class="smallBorder"></td>
+            <tr>
+                <td colspan="2">
+                    <hr class="smallBorder">
+                </td>
             </tr>
             <tr>
                 <td>Kaufpreis</td>
@@ -179,8 +183,8 @@
             <tr>
                 <td colspan="2"><input type=button onClick="location.href='gebotAbgegeben.php'" value='SOFORT KAUFEN'></td>
             </tr>
-        </table> 
-    </div> 
+        </table>
+    </div>
 </div>
 
 
@@ -202,15 +206,21 @@
 
 <div class="container-2" style="padding-bottom: 2em;">
     <div class="box-3">
-        
+
         <table border="0" width="100%" height="100%">
             <tr>
                 <td>Verkäufer:</td>
-                <td align="right"><?php echo $inserat["BENUTZERNAME"]; ?></td>
+                <td align="right">
+                    <?php echo $inserat["BENUTZERNAME"]; ?>
+                </td>
             </tr>
-            
-            <tr><td colspan="2" style="height: 1px"><hr class="smallBorder"></td></tr>
-            
+
+            <tr>
+                <td colspan="2" style="height: 1px">
+                    <hr class="smallBorder">
+                </td>
+            </tr>
+
             <tr>
                 <td colspan="2">
                     Adresse:<br>
@@ -221,9 +231,13 @@
                     ?>
                 </td>
             </tr>
-            
-            <tr><td colspan="2" style="height: 1px"><hr class="smallBorder"></td></tr>
-            
+
+            <tr>
+                <td colspan="2" style="height: 1px">
+                    <hr class="smallBorder">
+                </td>
+            </tr>
+
             <tr valign="bottom">
                 <td>
                     Tel:
@@ -244,15 +258,15 @@
                     ?>
                 </td>
             </tr>
-            
-        </table> 
-        
-        
-        
-         
+
+        </table>
+
+
+
+
     </div>
     <div class="box-4">
-         <iframe style="padding-top: 0.4em" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2702.377695745593!2d8.52265041562215!3d47.36554637916941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479009f6552b0ad5%3A0x6ce64332aeeb16ba!2sGoogle!5e0!3m2!1sde!2sch!4v1561969664905!5m2!1sde!2sch" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+        <iframe style="padding-top: 0.4em" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2702.377695745593!2d8.52265041562215!3d47.36554637916941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479009f6552b0ad5%3A0x6ce64332aeeb16ba!2sGoogle!5e0!3m2!1sde!2sch!4v1561969664905!5m2!1sde!2sch" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
     </div>
 </div>
 
