@@ -41,7 +41,7 @@
         echo
         "<li><a href='#'>" . $userData["BENUTZERNAME"] . "</a>
             <ul>
-                <li><a href='#'>Meine Artikel</a></li>
+                <li><a href='meineInserate.php'>Meine Inserate</a></li>
                 <li><a href='#'>Wunschliste</a></li>
                 <li><a href='#'>Blabla</a></li>
                 <li><a href='logout.php'>Abmelden</a></li>
