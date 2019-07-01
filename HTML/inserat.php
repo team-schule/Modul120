@@ -30,23 +30,39 @@
     .container-1 {
         display: flex;
         padding-top: 2em;
-        padding-bottom: 2em;
     }
 
     .container-1 div {
         /*border: 1px solid;*/
-
+    }
+    
+    .container-2 {
+        display: flex;
+        /*padding-bottom: 2em;*/
+        font-size: 30px;
+    }
+    
+    .container-2 div {
+        /*border: 1px solid;*/
     }
 
     .box-1 img {
         height: 30em;
         width: 30em;
-
     }
 
     .box-2 {
         width: 40em;
         font-size: 30px;
+    }
+    .box-3 {
+        min-width: 16em;
+        padding-left: 1em;
+        width: 16em;       
+    }
+    
+    .box-4 {
+        width: 40em;       
     }
 
     h3 {
@@ -144,7 +160,22 @@
             </tr>
         </table> 
     </div> 
-</div> 
+</div>
+
+<hr>
+
+<div class="container-2">
+    <div class="box-3">
+        Beschreibung:
+    </div>
+    <div class="box-4">
+        <?php echo $inserat["INHALT"]; ?>
+    </div>
+</div>
+
+<hr>
+
+
 
 
 <?php include("footer.html"); ?>
