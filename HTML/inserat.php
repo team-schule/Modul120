@@ -191,7 +191,7 @@
 
 <!--Beschreibung---------------------------------------------------------------------------------------------->
 
-<div class="container-2" style="background-color: rgb(59, 172, 183);">
+<div class="container-2" style="background-color: rgb(59, 172, 183); padding-top:0.6em; padding-bottom:0.6em; margin-top: 1em; margin-bottom: 1em">
     <div class="box-3">
         Beschreibung:
     </div>
