@@ -9,14 +9,22 @@
 
     if (isset($_GET["id"]))
     {
+        //***********************************************************************************
+        // Datenbank Auslesen
+        
         $sql =
-        "SELECT * ".
+        "SELECT TITEL, BILD, INHALT, PREIS_START, PREIS_ENDE, ANGEZEIGT_BIS, VORNAME, NACHNAME, BENUTZERNAME, EMAIL, MOBILE, STRASSE, PLZ, ORT ".
         "FROM inserate ".
-        "WHERE INSERATE_ID = " . $_GET["id"];
+        "INNER JOIN adressen on adressen.USER_ID = inserate.USER_ID ".
+        "INNER JOIN users on users.USER_ID = inserate.USER_ID ".
+        "WHERE INSERATE_ID = " . $_GET["id"] . " LIMIT 1";
 
         $result = mysql_query($sql);
 
         $inserat = mysql_fetch_array($result);
+        
+        //***********************************************************************************
+
     }
     else 
     {
@@ -28,6 +36,7 @@
 
 <style>
     .container-1 {
+        margin-right: 10px;
         display: flex;
         padding-top: 2em;
     }
@@ -37,6 +46,8 @@
     }
     
     .container-2 {
+        margin: 10px;
+        border-radius: 10px;
         display: flex;
         /*padding-bottom: 2em;*/
         font-size: 30px;
@@ -56,9 +67,10 @@
         font-size: 30px;
     }
     .box-3 {
-        min-width: 16em;
+        min-width: 15em;
         padding-left: 1em;
-        width: 16em;       
+        padding-right: 1em;
+        width: 15em;       
     }
     
     .box-4 {
@@ -103,10 +115,19 @@
       {
         background-color: #45a049;
       }
+    
+    
+    .smallBorder{
+        height: 0.1em;
+        background-color: rgb(59, 172, 183);
+        border: none;
+        border-radius: 1em;
+    }
 
 </style>
 
-<div class="container-1">
+<!--Inserat-Kopf---------------------------------------------------------------------------------------------->
+<div class="container-1" >
 
     <div class="box-1">
         <img src='Bilder/Coming-Soon.png'>
@@ -118,16 +139,16 @@
         <table border="0" width="100%">
             <tr>
             <td colspan="2">
-                        <h3>
-            <?php echo $inserat["TITEL"]; ?>
-        </h3>
+            <h3>
+                <?php echo $inserat["TITEL"]; ?>
+            </h3>
                 </td>
             </tr>
             <tr>
                 <td colspan="2">Inserat-Dauer bis: <?php echo $inserat["ANGEZEIGT_BIS"]; ?>
             </tr>
             <tr>
-                <td colspan="2"><hr></td>
+                <td colspan="2"><hr class="smallBorder"></td>
             </tr>
             <tr>
                 <td>Aktuelles Gebot</td>
@@ -146,7 +167,7 @@
                 <td colspan="2"><input type=button onClick="location.href='gebotAbgegeben.php'" value='GEBOT ABGEBEN'></td>
             </tr>
              <tr>
-                <td colspan="2"><hr></td>
+                <td colspan="2"><hr class="smallBorder"></td>
             </tr>
             <tr>
                 <td>Kaufpreis</td>
@@ -162,9 +183,11 @@
     </div> 
 </div>
 
-<hr>
 
-<div class="container-2">
+
+<!--Beschreibung---------------------------------------------------------------------------------------------->
+
+<div class="container-2" style="background-color: rgb(59, 172, 183);">
     <div class="box-3">
         Beschreibung:
     </div>
@@ -173,8 +196,65 @@
     </div>
 </div>
 
-<hr>
 
+
+<!--Verkäufer---------------------------------------------------------------------------------------------->
+
+<div class="container-2" style="padding-bottom: 2em;">
+    <div class="box-3">
+        
+        <table border="0" width="100%" height="100%">
+            <tr>
+                <td>Verkäufer:</td>
+                <td align="right"><?php echo $inserat["BENUTZERNAME"]; ?></td>
+            </tr>
+            
+            <tr><td colspan="2" style="height: 1px"><hr class="smallBorder"></td></tr>
+            
+            <tr>
+                <td colspan="2">
+                    Adresse:<br>
+                    <?php echo 
+                        $inserat["VORNAME"] . " " . $inserat["NACHNAME"] . "<br>" .
+                        $inserat["STRASSE"] . "<br>" .
+                        $inserat["PLZ"] . " " . $inserat["ORT"];
+                    ?>
+                </td>
+            </tr>
+            
+            <tr><td colspan="2" style="height: 1px"><hr class="smallBorder"></td></tr>
+            
+            <tr valign="bottom">
+                <td>
+                    Tel:
+                </td>
+                <td>
+                    <?php echo 
+                        $inserat["MOBILE"];
+                    ?>
+                </td>
+            </tr>
+            <tr valign="top">
+                <td>
+                    Mail:
+                </td>
+                <td>
+                    <?php echo 
+                        $inserat["EMAIL"];
+                    ?>
+                </td>
+            </tr>
+            
+        </table> 
+        
+        
+        
+         
+    </div>
+    <div class="box-4">
+         <iframe style="padding-top: 0.4em" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2702.377695745593!2d8.52265041562215!3d47.36554637916941!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479009f6552b0ad5%3A0x6ce64332aeeb16ba!2sGoogle!5e0!3m2!1sde!2sch!4v1561969664905!5m2!1sde!2sch" width="100%" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+    </div>
+</div>
 
 
 
