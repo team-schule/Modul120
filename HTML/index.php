@@ -1,5 +1,3 @@
-
-
 <?php
     session_start();
     include("db.inc.php");
@@ -7,31 +5,31 @@
 ?>
 
 <style>
-  .anzeigefeld {
-      position:relative;
-      left:200px;
-      display: grid;
-      grid-template-columns: 300px 300px 300px 300px;
-      grid-gap: 10px;
-      padding: 10px;
-  }
-    
-    .anzeigefeld > div {
+    .anzeigefeld {
+        position: relative;
+        left: 200px;
+        display: grid;
+        grid-template-columns: 300px 300px 300px 300px;
+        grid-gap: 10px;
+        padding: 10px;
+    }
+
+    .anzeigefeld>div {
         width: 300px;
         height: auto;
-  background-color: rgba(255, 255, 255, 0.8);
-  border: 1px solid black;
-  text-align: center;
-  font-size: 20px;
-}
-    
+        background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid black;
+        text-align: center;
+        font-size: 20px;
+    }
+
     .bildinserat {
         max-width: 200px;
     }
-    
+
 </style>
 
-    <?php
+<?php
 
    include("header.html"); //********************************************************************************************************
     // Login / Anmeldung
@@ -93,8 +91,8 @@ echo "</form>";
 
     ?>
 
-    <?php
-$sql = "SELECT TITEL, BILD, INHALT, ERFASST_AM, PREIS_START, ANGEZEIGT_BIS from inserate";
+<?php
+$sql = "SELECT TITEL, BILD, INHALT, ERFASST_AM, PREIS_START, ANGEZEIGT_BIS, INSERATE_ID from inserate";
 
 $abfrage = mysql_query($sql);
 
@@ -127,15 +125,10 @@ echo "<div class='anzeigefeld'>";
                     <p>" .$zeile["PREIS_START"] ." CHF</p>
 
                     <p>Endet am: " .$zeile["ANGEZEIGT_BIS"] ."</p>
-                    <p><input type='submit' name='detail' value='Zum Inserat'></input></p>
+                    <p><input type=button onClick=\"location.href='inserat.php?id=" . $zeile["INSERATE_ID"] . "'\" value='Zum Inserat'></input></p>
                 </article></div>";
 
 		}
 		echo "</div>";
      include("footer.html");
 ?>
-
-    
-
-   
-
