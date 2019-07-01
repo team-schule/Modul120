@@ -86,7 +86,7 @@
                     <tr>
                         <td style='width: 8em'><img src='Bilder/Coming-Soon.png'></td>
                         <td style='font-size: 1.8em'>" . $katRows[$key]["TITEL"] . "</td>
-                        <td style='width: 10em'><input type=button onClick='#' value='BEARBEITEN'></td>
+                        <td style='width: 10em'><input type=button onClick=\"location.href='inseratManipulation.php?id=" . $katRows[$key]["INSERATE_ID"] . "'\" value='BEARBEITEN'></td>
                     </tr>
                 </table><br>";
             }
