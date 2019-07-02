@@ -7,9 +7,9 @@
 <style>
     .anzeigefeld {
         position: relative;
-        left: 200px;
+        left: 20px;
         display: grid;
-        grid-template-columns: 300px 300px 300px 300px;
+        grid-template-columns: 300px 300px 300px 300px 300px 300px;
         grid-gap: 10px;
         padding: 10px;
     }
@@ -18,7 +18,6 @@
         width: 300px;
         height: auto;
         background-color: rgba(255, 255, 255, 0.8);
-        border: 1px solid black;
         text-align: center;
         font-size: 20px;
     }
@@ -26,6 +25,16 @@
     .bildinserat {
         max-width: 200px;
     }
+
+    h4 {
+        font-size: 50px;
+    }
+    
+    h5 {
+        font-size: 30px;
+    }
+    
+
 
 </style>
 
@@ -60,7 +69,6 @@
     //********************************************************************************************************
     // Kategorien
 
-    echo "<h4>Kategorien</h4>";
 
     $katSql =
     "SELECT * ".
@@ -76,16 +84,17 @@
         $katRows[] = $kategorienRows;
     }
 
-
+echo "<div class='anzeigefeld'>";
 echo "<form action='index.php'>";
-echo "<select name='Kategorie' size='1'>";
+echo "<h5>Kategorien</h5>";
+
+//echo "<select name='Kategorie'>";
     foreach($katRows as $key=> $item)
     {
-
-        echo "<option value='" . $katRows[$key]["KATEGORIE_TEXT"] . "'>" . $katRows[$key]["KATEGORIE_TEXT"] . "</option>";
+        echo "<input type='submit' name='" . $katRows[$key]["KATEGORIE_TEXT"] . "' value='" . $katRows[$key]["KATEGORIE_TEXT"] . "'><br>";
+        //echo "<option value='" . $katRows[$key]["KATEGORIE_TEXT"] . "'>" . //$katRows[$key]["KATEGORIE_TEXT"] . "</option>";
 
     }
-echo "</select>";
 echo "</form>";
 
 
@@ -103,7 +112,7 @@ if( ! $abfrage)
 
 
 
-echo "<div class='anzeigefeld'>";
+//echo "<div class='anzeigefeld'>";
 
     while ($zeile = mysql_fetch_array($abfrage))
 		{
@@ -119,7 +128,7 @@ echo "<div class='anzeigefeld'>";
       echo "<div><article>
 
                     <h5>" .$zeile["TITEL"] ."</h5>
-                    <p>$bild </p>
+                    <p>$bild</p>
                     
                     <p>" .$zeile["INHALT"] ."</p>
                     <p>" .$zeile["PREIS_START"] ." CHF</p>
