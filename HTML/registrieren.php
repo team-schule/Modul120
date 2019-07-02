@@ -175,7 +175,7 @@ $datum = date("y.m.d", $timestamp);
           $result2 = mysql_query($eintrag2);
           if ($result2 > 0)
           {
-              header ("Location: loginnachregistr.php");        
+            header ("Location: login.php");
           }
           else
           {
