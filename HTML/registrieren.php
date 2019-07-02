@@ -1,5 +1,9 @@
-
-
+<?php
+ob_start();
+require_once("db.inc.php");
+verbindung_mysql("Modul120");
+include("header.html");
+?>
 <style>
   input[type=password],
   input[type=email],
@@ -48,15 +52,19 @@ input[type=submit] {
 input[type=submit]:hover {
   background-color: #45a049;
 }
+h5{
+  font-size: 150%;
+}
 
 
 </style>
 
-<?php
-require_once("db.inc.php");
-verbindung_mysql("Modul120");
-include("header.html");
 
+<?php
+if (isset ($_REQUEST["fehlerbenutzer"]))
+{
+  echo "<h5>Benutzername schon vergeben !</h5>";
+}
 echo "<br>";
 
 echo "
@@ -66,10 +74,10 @@ echo "
 
     <p><input type='radio' name='geschlecht' checked style='margin-left: 80px'> Herr
         <input type='radio' name='geschlecht'> Frau </p>
-    <p><input type='text' name='vorname' placeholder='Vorname*' required> </p>
-    <p><input type='text' name='nachname' placeholder='Nachname*' required> </p>
+    <p><input type='text' name='vorname' placeholder='Vorname*'pattern='[a-zA-Z]{1,}' required> </p>
+    <p><input type='text' name='nachname' placeholder='Nachname*' pattern='[a-zA-Z]{1,}' required> </p>
     <p> <input type='text' name='strasse' placeholder='Strasse*' required > </p>
-    <p> <input type='number' name='plz' placeholder='PLZ*' required> </p>
+    <p> <input type='number' name='plz'  min='1000' max='9658' placeholder='PLZ*' required> </p>
     <p> <input type='text' name='ort' placeholder='Ort*'required> </p>
     <p> <select name='tag' required style='width:10em'>
           <option disabled selected hidden>Tag*</option>
@@ -122,7 +130,7 @@ echo "
         <input type='number' name='jahr' min='1900' max='2019' placeholder='Jahr*' style='width:10em'>
 
 
-    <p> <input type='text' name='benutzername' placeholder='Benutzername*' required size='30'> </p>
+    <p> <input type='text' name='benutzername' placeholder='Benutzername*' pattern='[a-zA-Z]{1,}' required size='30'> </p>
     <p> <input type='email' name='email' placeholder='E-Mail-Adresse*' required size='30'> </p>
     <p> <input type='password' name='password' placeholder='Passwort*' required size='30'> </p>
     <p> <input type='submit' name='add' value='Abschicken'></p>
@@ -133,54 +141,73 @@ echo "<p><b>Hinweis:</b> Bitte die mit * gekennzeichneten Felder ausfüllen.</p>
 
 if(isset($_POST['add']))
 {
-$timestamp = time();
-$datum = date("y.m.d", $timestamp);
-  $eintrag = "INSERT INTO users (VORNAME, NACHNAME, EMAIL, MOBILE, ERFASST_AM, LETZTE_AKTIVITAT, TOTAL_INSERATE,TOTAL_AUSGABEN, TOTAL_ERTRAG, BENUTZERNAME, PASSWORT)
-  			         VALUES ('$_POST[vorname]', '$_POST[nachname]', '$_POST[email]', '000 000 00 00','$datum', '$datum', '0', '0.00', '0.00', '$_POST[benutzername]', '$_POST[password]')";
+  $benutzername = $_REQUEST["benutzername"];
+  $sql3 = "SELECT * from users where BENUTZERNAME = '$benutzername'";
+      $result3 = mysql_query ($sql3);
+
+      if (mysql_num_rows ($result3) > 0)
+      {
+          echo "<script>alert('Benutzername bereits vergeben');</script>";
+
+      //header ("Location: registrieren.php?fehlerbenutzer");
+      }
+      else {
 
 
 
 
-  		$result = mysql_query($eintrag);
-  			if ($result > 0)
-  			{
-          //  header ("Location: index.php");
-  			}
-  			else
-  			{
-  			echo "Error <br>";
-  			}
+        $timestamp = time();
+        $datum = date("y.m.d", $timestamp);
+          $eintrag = "INSERT INTO users (VORNAME, NACHNAME, EMAIL, MOBILE, ERFASST_AM, LETZTE_AKTIVITAT, TOTAL_INSERATE,TOTAL_AUSGABEN, TOTAL_ERTRAG, BENUTZERNAME, PASSWORT)
+          			         VALUES ('$_POST[vorname]', '$_POST[nachname]', '$_POST[email]', '000 000 00 00','$datum', '$datum', '0', '0.00', '0.00', '$_POST[benutzername]', '$_POST[password]')";
 
 
 
-                      $sql = "SELECT ".
-                          "USER_ID ".
-                        "FROM ".
-                          "users ".
-                        "WHERE ".
-                          "(BENUTZERNAME like '".$_POST["benutzername"]."') AND ".
-                          "(PASSWORT = '". ($_POST["password"])."')";
 
-                          $result = mysql_query ($sql);
-                          $data = mysql_fetch_array ($result);
+          		$result = mysql_query($eintrag);
+          			if ($result > 0)
+          			{
+                  //  header ("Location: index.php");
+          			}
+          			else
+          			{
+          			echo "Error <br>";
+          			}
 
-                          $userid = $data["USER_ID"];
-                          $strasse = $_POST["strasse"];
-                          $plz = $_POST["plz"];
-                          $ort = $_POST["ort"];
 
-                $eintrag2 =          "INSERT INTO adressen (USER_ID, ADRESSTYP_ID, STRASSE, PLZ, ORT)
-                                        VALUES ('$userid', '1', '$strasse', '$plz', '$ort')";
 
-          $result2 = mysql_query($eintrag2);
-          if ($result2 > 0)
-          {
-            header ("Location: login.php");
-          }
-          else
-          {
-          echo "Error <br>";
-          }
+                              $sql = "SELECT ".
+                                  "USER_ID ".
+                                "FROM ".
+                                  "users ".
+                                "WHERE ".
+                                  "(BENUTZERNAME like '".$_POST["benutzername"]."') AND ".
+                                  "(PASSWORT = '". ($_POST["password"])."')";
+
+                                  $result = mysql_query ($sql);
+                                  $data = mysql_fetch_array ($result);
+
+                                  $userid = $data["USER_ID"];
+                                  $strasse = $_POST["strasse"];
+                                  $plz = $_POST["plz"];
+                                  $ort = $_POST["ort"];
+
+                        $eintrag2 =          "INSERT INTO adressen (USER_ID, ADRESSTYP_ID, STRASSE, PLZ, ORT)
+                                                VALUES ('$userid', '1', '$strasse', '$plz', '$ort')";
+
+                  $result2 = mysql_query($eintrag2);
+                  if ($result2 > 0)
+                  {
+
+                    header ("Location: loginnachregistr.php");
+                  }
+                  else
+                  {
+                  echo "Error <br>";
+                  }
+
+}
+
 }
 
 

@@ -7,9 +7,9 @@
 <style>
     .anzeigefeld {
         position: relative;
-        left: 20px;
+        left: 200px;
         display: grid;
-        grid-template-columns: 300px 300px 300px 300px 300px 300px;
+        grid-template-columns: 300px 300px 300px 300px;
         grid-gap: 10px;
         padding: 10px;
     }
@@ -18,6 +18,7 @@
         width: 300px;
         height: auto;
         background-color: rgba(255, 255, 255, 0.8);
+        border: 1px solid black;
         text-align: center;
         font-size: 20px;
     }
@@ -25,16 +26,6 @@
     .bildinserat {
         max-width: 200px;
     }
-
-    h4 {
-        font-size: 50px;
-    }
-    
-    h5 {
-        font-size: 30px;
-    }
-    
-
 
 </style>
 
@@ -51,6 +42,7 @@
         "<li><a href='#'>" . $userData["BENUTZERNAME"] . "</a>
             <ul>
                 <li><a href='meineInserate.php'>Meine Inserate</a></li>
+                <li><a href='meinprofil.php'>Profil bearbeiten</a></li>
                 <li><a href='#'>Wunschliste</a></li>
                 <li><a href='#'>Blabla</a></li>
                 <li><a href='logout.php'>Abmelden</a></li>
@@ -69,6 +61,7 @@
     //********************************************************************************************************
     // Kategorien
 
+    echo "<h4>Kategorien</h4>";
 
     $katSql =
     "SELECT * ".
@@ -84,17 +77,16 @@
         $katRows[] = $kategorienRows;
     }
 
-echo "<div class='anzeigefeld'>";
-echo "<form action='index.php'>";
-echo "<h5>Kategorien</h5>";
 
-//echo "<select name='Kategorie'>";
+echo "<form action='index.php'>";
+echo "<select name='Kategorie' size='1'>";
     foreach($katRows as $key=> $item)
     {
-        echo "<input type='submit' name='" . $katRows[$key]["KATEGORIE_TEXT"] . "' value='" . $katRows[$key]["KATEGORIE_TEXT"] . "'><br>";
-        //echo "<option value='" . $katRows[$key]["KATEGORIE_TEXT"] . "'>" . //$katRows[$key]["KATEGORIE_TEXT"] . "</option>";
+
+        echo "<option value='" . $katRows[$key]["KATEGORIE_TEXT"] . "'>" . $katRows[$key]["KATEGORIE_TEXT"] . "</option>";
 
     }
+echo "</select>";
 echo "</form>";
 
 
@@ -112,7 +104,7 @@ if( ! $abfrage)
 
 
 
-//echo "<div class='anzeigefeld'>";
+echo "<div class='anzeigefeld'>";
 
     while ($zeile = mysql_fetch_array($abfrage))
 		{
@@ -121,15 +113,15 @@ if( ! $abfrage)
         }
         else
         {
-           $bild = "<img class='bildinserat' src='" .$zeile["BILD"] ."'>"; 
+           $bild = "<img class='bildinserat' src='" .$zeile["BILD"] ."'>";
         }
-        
-        
+
+
       echo "<div><article>
 
                     <h5>" .$zeile["TITEL"] ."</h5>
-                    <p>$bild</p>
-                    
+                    <p>$bild </p>
+
                     <p>" .$zeile["INHALT"] ."</p>
                     <p>" .$zeile["PREIS_START"] ." CHF</p>
 
