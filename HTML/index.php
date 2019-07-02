@@ -1,25 +1,46 @@
-<!DOCTYPE html>
-
 <?php
     session_start();
     include("db.inc.php");
-    include("header.html");
     verbindung_mysql("Modul120")
 ?>
 
-<html lang="en" dir="ltr">
+<style>
+    .anzeigefeld {
+        position: relative;
+        left: 20px;
+        display: grid;
+        grid-template-columns: 300px 300px 300px 300px 300px 300px;
+        grid-gap: 10px;
+        padding: 10px;
+    }
 
-<head>
+    .anzeigefeld>div {
+        width: 300px;
+        height: auto;
+        background-color: rgba(255, 255, 255, 0.8);
+        text-align: center;
+        font-size: 20px;
+    }
 
-    <meta charset="utf-8">
-    <title>Projekt Modul120</title>
+    .bildinserat {
+        max-width: 200px;
+    }
 
-</head>
-<main>
+    h4 {
+        font-size: 50px;
+    }
+    
+    h5 {
+        font-size: 30px;
+    }
+    
 
-    <?php
 
-    //********************************************************************************************************
+</style>
+
+<?php
+
+   include("header.html"); //********************************************************************************************************
     // Login / Anmeldung
 
     if (isset($_SESSION["userData"]))
@@ -29,10 +50,10 @@
         echo
         "<li><a href='#'>" . $userData["BENUTZERNAME"] . "</a>
             <ul>
-                <li><a href='#'>Meine Artikel</a></li>
+                <li><a href='meineInserate.php'>Meine Inserate</a></li>
                 <li><a href='#'>Wunschliste</a></li>
                 <li><a href='#'>Blabla</a></li>
-                <li><a href='#'>Abmelden</a></li>
+                <li><a href='logout.php'>Abmelden</a></li>
             </ul>
         </li>";
     }
@@ -48,7 +69,6 @@
     //********************************************************************************************************
     // Kategorien
 
-    echo "<h4>Kategorien</h4>";
 
     $katSql =
     "SELECT * ".
@@ -64,23 +84,24 @@
         $katRows[] = $kategorienRows;
     }
 
-
+echo "<div class='anzeigefeld'>";
 echo "<form action='index.php'>";
-echo "<select name='Kategorie' size='1'>";
+echo "<h5>Kategorien</h5>";
+
+//echo "<select name='Kategorie'>";
     foreach($katRows as $key=> $item)
-    {        
-        
-        echo "<option value='" . $katRows[$key]["KATEGORIE_TEXT"] . "'>" . $katRows[$key]["KATEGORIE_TEXT"] . "</option>";
+    {
+        echo "<input type='submit' name='" . $katRows[$key]["KATEGORIE_TEXT"] . "' value='" . $katRows[$key]["KATEGORIE_TEXT"] . "'><br>";
+        //echo "<option value='" . $katRows[$key]["KATEGORIE_TEXT"] . "'>" . //$katRows[$key]["KATEGORIE_TEXT"] . "</option>";
 
     }
-echo "</select>";
 echo "</form>";
-   
+
 
     ?>
-    
-    <?php
-$sql = "SELECT TITEL, INHALT, ERFASST_AM, PREIS_START, ANGEZEIGT_VON, ANGEZEIGT_BIS from inserate";
+
+<?php
+$sql = "SELECT TITEL, BILD, INHALT, ERFASST_AM, PREIS_START, ANGEZEIGT_BIS, INSERATE_ID from inserate";
 
 $abfrage = mysql_query($sql);
 
@@ -89,38 +110,34 @@ if( ! $abfrage)
 			echo "<p>Die SQL-Anweisung ist fehlgeschlagen...</p>";
 		}
 
-echo "<table width='100%' border='1'>
-<tr>
-                <th>Titel</th>
 
-                <th>Inhalt</th>
 
-                <th>Startpreis</th>
-
-                <th>Angezeit von</th>
-                <th>Angezeit bis</th>
-              </tr>";
+//echo "<div class='anzeigefeld'>";
 
     while ($zeile = mysql_fetch_array($abfrage))
 		{
-      echo "
-			<tr>
+        if (!$zeile["BILD"]){
+            $bild = "Kein Bild vordhanden.";
+        }
+        else
+        {
+           $bild = "<img class='bildinserat' src='" .$zeile["BILD"] ."'>"; 
+        }
+        
+        
+      echo "<div><article>
 
-                    <td>" .$zeile["TITEL"] ."</td>
+                    <h5>" .$zeile["TITEL"] ."</h5>
+                    <p>$bild</p>
+                    
+                    <p>" .$zeile["INHALT"] ."</p>
+                    <p>" .$zeile["PREIS_START"] ." CHF</p>
 
-                    <td>" .$zeile["INHALT"] ."</td>
-
-                    <td>" .$zeile["PREIS_START"] ."</td>
-
-                    <td>" .$zeile["ANGEZEIGT_VON"] ."</td>
-                    <td>" .$zeile["ANGEZEIGT_BIS"] ."</td>
-                </tr>";
+                    <p>Endet am: " .$zeile["ANGEZEIGT_BIS"] ."</p>
+                    <p><input type=button onClick=\"location.href='inserat.php?id=" . $zeile["INSERATE_ID"] . "'\" value='Zum Inserat'></input></p>
+                </article></div>";
 
 		}
-		echo "</table>";
-
+		echo "</div>";
+     include("footer.html");
 ?>
-</main>
-<?php
-    include("footer.html");
-    ?>
