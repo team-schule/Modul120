@@ -42,6 +42,7 @@
         "<li><a href='#'>" . $userData["BENUTZERNAME"] . "</a>
             <ul>
                 <li><a href='meineInserate.php'>Meine Inserate</a></li>
+                <li><a href='meinprofil.php'>Profil bearbeiten</a></li>
                 <li><a href='#'>Wunschliste</a></li>
                 <li><a href='#'>Blabla</a></li>
                 <li><a href='logout.php'>Abmelden</a></li>
@@ -112,15 +113,15 @@ echo "<div class='anzeigefeld'>";
         }
         else
         {
-           $bild = "<img class='bildinserat' src='" .$zeile["BILD"] ."'>"; 
+           $bild = "<img class='bildinserat' src='" .$zeile["BILD"] ."'>";
         }
-        
-        
+
+
       echo "<div><article>
 
                     <h5>" .$zeile["TITEL"] ."</h5>
                     <p>$bild </p>
-                    
+
                     <p>" .$zeile["INHALT"] ."</p>
                     <p>" .$zeile["PREIS_START"] ." CHF</p>
 
