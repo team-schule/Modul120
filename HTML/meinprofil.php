@@ -157,11 +157,11 @@ $user = $_SESSION["user"];
                 <form action="meinprofil.php" method="post">
                   <h4>Postfach</h4>
                   <p>Strasse*</p>
-                  <input type="text" name="strasse*" placeholder="Strasse" value="<?php echo $adressenPostfach['STRASSE'];?>">
+                  <input type="text" name="strasse" placeholder="Strasse*" value="<?php echo $adressenPostfach['STRASSE'];?>">
                   <p>PLZ*</p>
-                  <input type="number" name="plz*" placeholder="PLZ" min="1000" max="9658" value="<?php echo $adressenPostfach['PLZ'];?>">
+                  <input type="number" name="plz" placeholder="PLZ*" min="1000" max="9658" value="<?php echo $adressenPostfach['PLZ'];?>">
                   <p>Ort*</p>
-                  <input type="text" name="ort*" placeholder="Ort" value="<?php echo $adressenPostfach['ORT'];?>">
+                  <input type="text" name="ort" placeholder="Ort*" value="<?php echo $adressenPostfach['ORT'];?>">
 
                   <?php
                     if ($adressenPostfach['STRASSE'] == null)
@@ -307,7 +307,7 @@ $user = $_SESSION["user"];
                                           $sql6 = "INSERT into adressen (USER_ID, ADRESSTYP_ID, STRASSE, PLZ, ORT)
                                                       VALUES ('$userid', 3, '$strasse', '$plz', '$ort')";
                                           $result6 = mysql_query ($sql6);
-
+                                          echo "$strasse <p>jdhfhfh</p>";
                                           if ($result6 > 0)
                                           {
                                               header ("Location: meinprofil.php?hinzu");
@@ -317,7 +317,7 @@ $user = $_SESSION["user"];
                                               echo "		Edit fehlgeschlagen";
                                           }
                                         }
-                                      ?>
+                                    ?>
       </div>
 
 <?php
