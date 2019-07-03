@@ -26,6 +26,47 @@
     .bildinserat {
         max-width: 200px;
     }
+    .kat{
+      width: 50px;
+      float:left;
+      position: relative;
+      box-sizing: border-box;
+      margin-top: 10px;
+      margin-bottom: 10px;
+    }
+    input[type=button],
+    input[type=submit]{
+      margin: 5px;
+      background-color: blue;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 10em;
+    }
+    input[type=submit]:hover,
+    input[type=button]:hover
+    {
+      background-color: #45a049;
+    }
+    .kategorie{
+      font-size: 120%;
+    }
+    #titelkat{
+      font-size: 200%;
+
+    }
+    input[type=text]{
+      width: 45em;
+      margin-left: 180px;
+      margin-bottom: 20px;
+      border: solid 3px blue;
+      border-radius: 5px;
+      font-size: 110%;
+
+
+    }
+
 
 </style>
 
@@ -39,7 +80,7 @@
         $userData = $_SESSION["userData"];
 
         echo
-        "<li><a href='#'>" . $userData["BENUTZERNAME"] . "</a>
+        "<li><p>Willkommen <b>" . $userData["BENUTZERNAME"] . "<b></p>
             <ul>
                 <li><a href='meineInserate.php'>Meine Inserate</a></li>
                 <li><a href='meinprofil.php'>Profil bearbeiten</a></li>
@@ -60,8 +101,14 @@
 
     //********************************************************************************************************
     // Kategorien
+    echo "<h4 id='titelkat'>Kategorien</h4>";
+    echo "<form action='index.php' method='post'>";
+    echo "<input type='text' name='usereingabe'style='margin-top:5px,padding-left:5px;' placeholder='Suchen.....'>";
+    echo "<input type='submit' style='font-size:130%' name='suchen' value='Suchen'>";
+    echo "</form>";
+    echo "<div class='kat'";
 
-    echo "<h4>Kategorien</h4>";
+
 
     $katSql =
     "SELECT * ".
@@ -78,33 +125,136 @@
     }
 
 
-echo "<form action='index.php'>";
-echo "<select name='Kategorie' size='1'>";
+echo "<form action='index.php' method='post'>";
+
+
+echo "<input type='button' style='font-size:120%' onClick=location.href='index.php?alle' name='alle' value='Alle Inserate'>";
+
     foreach($katRows as $key=> $item)
     {
-
-        echo "<option value='" . $katRows[$key]["KATEGORIE_TEXT"] . "'>" . $katRows[$key]["KATEGORIE_TEXT"] . "</option>";
+      $kategorie =$katRows[$key]['KATEGORIE_TEXT'];
+      echo "<input type='button' onClick=location.href='index.php?$kategorie' name='". $katRows[$key]["KATEGORIE_TEXT"]."' class='kategorie' value='" . $katRows[$key]["KATEGORIE_TEXT"] . "'>";
 
     }
-echo "</select>";
+
 echo "</form>";
+echo "</div>";
 
-
+echo "<div class='anzeigefeld'>";
     ?>
 
 <?php
 $sql = "SELECT TITEL, BILD, INHALT, ERFASST_AM, PREIS_START, ANGEZEIGT_BIS, INSERATE_ID from inserate";
+if(isset($_REQUEST_['Alle Kategorien'])){
+  $sql = "SELECT TITEL, BILD, INHALT, ERFASST_AM, PREIS_START, ANGEZEIGT_BIS, INSERATE_ID from inserate";
+}
+elseif(isset($_REQUEST['Antiquitäten'])){
+  $meldung = "Antiquitäten";
+  $sql = "SELECT TITEL, BILD, INHALT, ERFASST_AM, PREIS_START, ANGEZEIGT_BIS, INSERATE_ID from inserate where KATEGORIE_ID=1";
+}
+elseif (isset($_REQUEST['TV,Video'])) {
+  $meldung = "TV,Video";
+  $sql = "SELECT TITEL, BILD, INHALT, ERFASST_AM, PREIS_START, ANGEZEIGT_BIS, INSERATE_ID from inserate where KATEGORIE_ID=2";
+}
+elseif (isset($_REQUEST['Briefmarken'])) {
+  $meldung = "Briefmarken";
+  $sql = "SELECT TITEL, BILD, INHALT, ERFASST_AM, PREIS_START, ANGEZEIGT_BIS, INSERATE_ID from inserate where KATEGORIE_ID=3";
+}
+elseif (isset($_REQUEST['Bücher'])) {
+  $meldung = "Bücher";
+  $sql = "SELECT TITEL, BILD, INHALT, ERFASST_AM, PREIS_START, ANGEZEIGT_BIS, INSERATE_ID from inserate where KATEGORIE_ID=4";
+}
+elseif (isset($_REQUEST['Computer'])) {
+  $meldung = "Computer";
+  $sql = "SELECT TITEL, BILD, INHALT, ERFASST_AM, PREIS_START, ANGEZEIGT_BIS, INSERATE_ID from inserate where KATEGORIE_ID=5";
+}
+elseif (isset($_REQUEST['Filme,DVD'])) {
+  $meldung = "Filme,DVD";
+  $sql = "SELECT TITEL, BILD, INHALT, ERFASST_AM, PREIS_START, ANGEZEIGT_BIS, INSERATE_ID from inserate where KATEGORIE_ID=6";
+}
+elseif (isset($_REQUEST['Spielkonsolen'])) {
+  $meldung = "Spielkonsolen";
+  $sql = "SELECT TITEL, BILD, INHALT, ERFASST_AM, PREIS_START, ANGEZEIGT_BIS, INSERATE_ID from inserate where KATEGORIE_ID=7";
+}
+elseif (isset($_REQUEST['Smartphones'])) {
+  $meldung = "Smartphones";
+  $sql = "SELECT TITEL, BILD, INHALT, ERFASST_AM, PREIS_START, ANGEZEIGT_BIS, INSERATE_ID from inserate where KATEGORIE_ID=8";
+}
+elseif (isset($_REQUEST['Haushalt,Wohnen'])) {
+  $meldung = "Haushalt,Wohnen";
+  $sql = "SELECT TITEL, BILD, INHALT, ERFASST_AM, PREIS_START, ANGEZEIGT_BIS, INSERATE_ID from inserate where KATEGORIE_ID=9";
+}
+elseif (isset($_REQUEST['Kleidung'])) {
+  $meldung = "Kleidung";
+  $sql = "SELECT TITEL, BILD, INHALT, ERFASST_AM, PREIS_START, ANGEZEIGT_BIS, INSERATE_ID from inserate where KATEGORIE_ID=10";
+}
+elseif (isset($_REQUEST['Freizeit,Hobby'])) {
+  $meldung = "Freizeit,Hobby";
+  $sql = "SELECT TITEL, BILD, INHALT, ERFASST_AM, PREIS_START, ANGEZEIGT_BIS, INSERATE_ID from inserate where KATEGORIE_ID=11";
+}
+elseif (isset($_REQUEST['Musikinstrumente'])) {
+  $meldung = "Musikinstrumente";
+  $sql = "SELECT TITEL, BILD, INHALT, ERFASST_AM, PREIS_START, ANGEZEIGT_BIS, INSERATE_ID from inserate where KATEGORIE_ID=12";
+}
+elseif (isset($_REQUEST['Münzen'])) {
+  $meldung = "Münzen";
+  $sql = "SELECT TITEL, BILD, INHALT, ERFASST_AM, PREIS_START, ANGEZEIGT_BIS, INSERATE_ID from inserate where KATEGORIE_ID=13";
+}
+elseif (isset($_REQUEST['Sammeln,Seltenes'])) {
+  $meldung = "Sammeln,Seltenes";
+  $sql = "SELECT TITEL, BILD, INHALT, ERFASST_AM, PREIS_START, ANGEZEIGT_BIS, INSERATE_ID from inserate where KATEGORIE_ID=14";
+}
+elseif (isset($_REQUEST['Spielzeug'])) {
+  $meldung = "Spielzeug";
+  $sql = "SELECT TITEL, BILD, INHALT, ERFASST_AM, PREIS_START, ANGEZEIGT_BIS, INSERATE_ID from inserate where KATEGORIE_ID=15";
+}
+elseif (isset($_REQUEST['Sport'])) {
+  $meldung = "Sport";
+  $sql = "SELECT TITEL, BILD, INHALT, ERFASST_AM, PREIS_START, ANGEZEIGT_BIS, INSERATE_ID from inserate where KATEGORIE_ID=16";
+}
+elseif (isset($_REQUEST['Tierzubehör'])) {
+  $meldung = "Tierzubehör";
+  $sql = "SELECT TITEL, BILD, INHALT, ERFASST_AM, PREIS_START, ANGEZEIGT_BIS, INSERATE_ID from inserate where KATEGORIE_ID=17";
+}
+elseif (isset($_REQUEST['Schmuck'])) {
+  $meldung = "Schmuck";
+  $sql = "SELECT TITEL, BILD, INHALT, ERFASST_AM, PREIS_START, ANGEZEIGT_BIS, INSERATE_ID from inserate where KATEGORIE_ID=18";
+}
+elseif (isset($_REQUEST['Wein,Genus'])) {
+  $meldung = "Wein,Genus";
+  $sql = "SELECT TITEL, BILD, INHALT, ERFASST_AM, PREIS_START, ANGEZEIGT_BIS, INSERATE_ID from inserate where KATEGORIE_ID=19";
+}
+elseif(isset($_POST['suchen'])){
+  $suche = $_POST['usereingabe'];
+  $sql = "SELECT TITEL, BILD, INHALT, ERFASST_AM, PREIS_START, ANGEZEIGT_BIS, INSERATE_ID from inserate where INHALT like '%$suche%' or TITEL like '%suche%'";
+  $meldung = $suche;
+  }
+  else {
+    $sql="SELECT TITEL, BILD, INHALT, ERFASST_AM, PREIS_START, ANGEZEIGT_BIS, INSERATE_ID from inserate";
+  }
 
+$erg = mysql_query($sql);
+if(mysql_num_rows($erg)==0){
+  if(isset($_POST['suchen'])){
+    echo "<script>alert('Keine Treffer für die suche $meldung ')</script>";
+    $sql="SELECT TITEL, BILD, INHALT, ERFASST_AM, PREIS_START, ANGEZEIGT_BIS, INSERATE_ID from inserate";
+  }
+  else {
+    echo "<script>alert('Keine Inserate in der Kategorie $meldung gefunden')</script>";
+    $sql="SELECT TITEL, BILD, INHALT, ERFASST_AM, PREIS_START, ANGEZEIGT_BIS, INSERATE_ID from inserate";
+  }
+}
 $abfrage = mysql_query($sql);
 
 if( ! $abfrage)
 		{
-			echo "<p>Die SQL-Anweisung ist fehlgeschlagen...</p>";
+      echo "error";
+
 		}
 
 
 
-echo "<div class='anzeigefeld'>";
+
 
     while ($zeile = mysql_fetch_array($abfrage))
 		{
@@ -116,7 +266,8 @@ echo "<div class='anzeigefeld'>";
            $bild = "<img class='bildinserat' src='" .$zeile["BILD"] ."'>";
         }
 
-
+        $date=$zeile['ANGEZEIGT_BIS'];
+        $dateformat=date('d.m.Y', strtotime($date));
       echo "<div><article>
 
                     <h5>" .$zeile["TITEL"] ."</h5>
@@ -125,7 +276,7 @@ echo "<div class='anzeigefeld'>";
                     <p>" .$zeile["INHALT"] ."</p>
                     <p>" .$zeile["PREIS_START"] ." CHF</p>
 
-                    <p>Endet am: " .$zeile["ANGEZEIGT_BIS"] ."</p>
+                    <p>Endet am: $dateformat   </p>
                     <p><input type=button onClick=\"location.href='inserat.php?id=" . $zeile["INSERATE_ID"] . "'\" value='Zum Inserat'></input></p>
                 </article></div>";
 
