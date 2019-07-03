@@ -166,63 +166,66 @@
     }
 ?>
 
-<div class="container-1">
+<form action="inseratVerarbeitung.php" method="post">
+    <div class="container-1">
+        <div class="box-1">
+            <img src='Bilder/Coming-Soon.png'>
+            <input class="pic" type=button onClick="location.href='#'" value='BILD AUSWÄHLEN'>
+        </div>
 
-    <div class="box-1">
-        <img src='Bilder/Coming-Soon.png'>
-        <input class="pic" type=button onClick="location.href='#'" value='BILD AUSWÄHLEN'>
-    </div>
-
-    <div class="box-2">
+        <div class="box-2">
 
 
-        <table border="0">
-            <tr>
-                <td colspan="2">
+            <table border="0">
+                <tr>
+                    <td colspan="2">
 
-                    <p><input type='text' name='titel' placeholder='Titel*' pattern='[a-zA-Z]{1,}' required></p>
+                        <p><input type='text' name='titel' placeholder='Titel*' required value='<?php echo $inserat["TITEL"]; ?>'></p>
 
-                </td>
-            </tr>
-            <tr>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <hr class="smallBorder">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Dauer von:<input type='date' name='vonDatum' placeholder='von*' required style="width: 95%;" value='<?php echo $inserat["ANGEZEIGT_VON"]; ?>'>
+                    </td>
+                    <td> bis:<input type='date' name='bisDatum' placeholder='bis*' required value='<?php echo $inserat["ANGEZEIGT_BIS"]; ?>'>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <hr class="smallBorder">
+                    </td>
+                </tr>
+                <tr>
+                    <td>Startpreis:<input type='number' name='startPreis' placeholder='Startpreis*' required style="width: 95%;" value='<?php echo $inserat["PREIS_START"]; ?>'>
+                    </td>
+                    <td>Endpreis:<input type='number' name='endPreis' placeholder='Endpreis*' required value='<?php echo $inserat["PREIS_ENDE"]; ?>'>
+                    </td>
+                </tr>
                 <td colspan="2">
                     <hr class="smallBorder">
                 </td>
-            </tr>
-            <tr>
-                <td>Dauer von:<input type='date' name='vonDatum' placeholder='von*' required style="width: 95%;">
-                </td>
-                <td> bis:<input type='date' name='bisDatum' placeholder='bis*' required>
-                </td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <hr class="smallBorder">
-                </td>
-            </tr>
-            <tr>
-                <td>Startpreis:<input type='number' name='startPreis' placeholder='Startpreis*' required style="width: 95%;">
-                </td>
-                <td>Endpreis:<input type='number' name='endPreis' placeholder='Endpreis*' required>
-                </td>
-            </tr>
-            <td colspan="2">
-                <hr class="smallBorder">
-            </td>
-            <tr>
-                <td colspan="2">
-                    <p><textarea name="message" rows="10" placeholder='Beschreibung*'></textarea></p>
-                </td>
-            </tr>
-        </table>
-    </div>
-</div>
+                <tr>
+                    <td colspan="2">
+                        <p><textarea name="message" rows="10" placeholder='Beschreibung*'><?php echo $inserat["INHALT"]; ?></textarea></p>
+                    </td>
+                </tr>
+            </table>
+        </div>
 
-<div class="container-2">
-    <div class="box-2">
-        <hr class="smallBorder">
-        <input class="save" type=button onClick="location.href='#'" value='Speichern'>
     </div>
-</div>
+
+    <div class="container-2">
+        <div class="box-2">
+            <hr class="smallBorder">
+            <input class="save" type="submit" value="SPEICHERN">
+            <input type='hidden' name='inseratID' value='<?php echo $inserat["INSERATE_ID"]; ?>'>
+        </div>
+    </div>
+</form>
 
 <?php include("footer.html"); ?>
