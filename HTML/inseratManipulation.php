@@ -150,22 +150,6 @@
 
     if (isset($_SESSION["userData"]))
     {
-        //***********************************************************************************
-        // Datenbank Auslesen
-        
-        $userData = $_SESSION["userData"];
-        
-        $sql =
-        "SELECT * ".
-        "FROM inserate ".
-        "WHERE inserate.USER_ID = " . $_GET["id"] . " LIMIT 1";
-
-        $result = mysql_query($sql);
-
-        $inserat = mysql_fetch_array($result);
-        
-        
-        
         // Kategorie vorbereiten
         
         $drop1 = "";
@@ -188,69 +172,98 @@
         $drop18 = "";
         $drop19 = "";
         
-        switch ($inserat["KATEGORIE_ID"])
+        if ($_GET["id"] != "neu")
         {
-            case "1":
-                $drop1 = "selected";
-                break;
-            case "2":
-                $drop2 = "selected";
-                break;
-            case "3":
-                $drop3 = "selected";
-                break;
-            case "4":
-                $drop4 = "selected";
-                break;
-            case "5":
-                $drop5 = "selected";
-                break;
-            case "6":
-                $drop6 = "selected";
-                break;
-            case "7":
-                $drop7 = "selected";
-                break;
-            case "8":
-                $drop8 = "selected";
-                break;
-            case "9":
-                $drop9 = "selected";
-                break;
-            case "10":
-                $drop10 = "selected";
-                break;
-            case "11":
-                $drop11 = "selected";
-                break;
-            case "12":
-                $drop12 = "selected";
-                break;
-            case "13":
-                $drop13 = "selected";
-                break;
-            case "14":
-                $drop14 = "selected";
-                break;
-            case "15":
-                $drop15 = "selected";
-                break;
-            case "16":
-                $drop16 = "selected";
-                break;
-            case "17":
-                $drop17 = "selected";
-                break;
-            case "18":
-                $drop18 = "selected";
-                break;
-            case "19":
-                $drop19 = "selected";
-                break;
-    
+            //***********************************************************************************
+            // Datenbank Auslesen
+
+            $userData = $_SESSION["userData"];
+
+            $sql =
+            "SELECT * ".
+            "FROM inserate ".
+            "WHERE inserate.USER_ID = " . $_GET["id"] . " LIMIT 1";
+
+            $result = mysql_query($sql);
+
+            $inserat = mysql_fetch_array($result);
+
+            //**********************************************************************************
+
+
+            // vorbereitung um Kategorie default zu selektieren
+            switch ($inserat["KATEGORIE_ID"])
+            {
+                case "1":
+                    $drop1 = "selected";
+                    break;
+                case "2":
+                    $drop2 = "selected";
+                    break;
+                case "3":
+                    $drop3 = "selected";
+                    break;
+                case "4":
+                    $drop4 = "selected";
+                    break;
+                case "5":
+                    $drop5 = "selected";
+                    break;
+                case "6":
+                    $drop6 = "selected";
+                    break;
+                case "7":
+                    $drop7 = "selected";
+                    break;
+                case "8":
+                    $drop8 = "selected";
+                    break;
+                case "9":
+                    $drop9 = "selected";
+                    break;
+                case "10":
+                    $drop10 = "selected";
+                    break;
+                case "11":
+                    $drop11 = "selected";
+                    break;
+                case "12":
+                    $drop12 = "selected";
+                    break;
+                case "13":
+                    $drop13 = "selected";
+                    break;
+                case "14":
+                    $drop14 = "selected";
+                    break;
+                case "15":
+                    $drop15 = "selected";
+                    break;
+                case "16":
+                    $drop16 = "selected";
+                    break;
+                case "17":
+                    $drop17 = "selected";
+                    break;
+                case "18":
+                    $drop18 = "selected";
+                    break;
+                case "19":
+                    $drop19 = "selected";
+                    break;
+
+            }
         }
-        
-        //**********************************************************************************
+        else
+        {
+            $inserat["TITEL"] = '';
+            $inserat["INHALT"] = '';
+            $inserat["ANGEZEIGT_VON"] = '';
+            $inserat["ANGEZEIGT_BIS"] = '';
+            $inserat["PREIS_START"] = '';
+            $inserat["PREIS_ENDE"] = '';
+            $inserat["INSERATE_ID"] = 'neu';                
+        }
     }
     else 
     {
@@ -266,7 +279,6 @@
     <div class="container-1">
         <div class="box-1">
             <select class="dropDown" name="kategorie">
-                <option value="">Kategorie</option>
                 <option value="1" <?php echo $drop1; ?> >Antiquitäten</option>
                 <option value="2" <?php echo $drop2; ?> >TV,Video</option>
                 <option value="3" <?php echo $drop3; ?> >Briefmarken</option>

@@ -20,20 +20,29 @@ if (isset($_SESSION["userData"]))
     $angezeigtVon = $_POST['vonDatum'];
     $angezeigtBis = $_POST['bisDatum'];
     $inseratID = $_POST['inseratID'];
+    $userID = $userData['USER_ID'];
     
     
-    
-    $eintrag =
-    "UPDATE inserate ".
-    "SET TITEL = '$titel', ".
-    "KATEGORIE_ID = '$kategorie', ".
-    "INHALT = '$inhalt', ". 
-    "PREIS_START = '$preisStart', ".
-    "PREIS_ENDE = '$preisEnde', ".
-    "ANGEZEIGT_VON = '$angezeigtVon', ".
-    "ANGEZEIGT_BIS = '$angezeigtBis' ".
-    "WHERE INSERATE_ID = '$inseratID' ";
-        
+    if ($inseratID == "neu")
+    {
+        $eintrag = 
+        "INSERT INTO inserate ".
+        "(TITEL, KATEGORIE_ID, INHALT, PREIS_START, PREIS_ENDE, ANGEZEIGT_VON, ANGEZEIGT_BIS, USER_ID, ERFASST_AM) ".
+        "VALUES ('$titel', '$kategorie', '$inhalt', '$preisStart','$preisEnde', '$angezeigtVon', '$angezeigtBis', '$userID', 'date(\"Y/m/d\")')";
+    }
+    else
+    {
+        $eintrag =
+        "UPDATE inserate ".
+        "SET TITEL = '$titel', ".
+        "KATEGORIE_ID = '$kategorie', ".
+        "INHALT = '$inhalt', ". 
+        "PREIS_START = '$preisStart', ".
+        "PREIS_ENDE = '$preisEnde', ".
+        "ANGEZEIGT_VON = '$angezeigtVon', ".
+        "ANGEZEIGT_BIS = '$angezeigtBis' ".
+        "WHERE INSERATE_ID = '$inseratID' ";
+    }
 
     $result = mysql_query($eintrag);
      

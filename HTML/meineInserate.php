@@ -101,7 +101,7 @@
         "<table border='0'>
             <tr>
                 <td></td>
-                <td style='width: 10em'><input type=button onClick='#' value='NEU'></td>
+                <td style='width: 10em'><input type=button onClick=\"location.href='inseratManipulation.php?id=neu'\" value='NEU'></td>
             </tr>
         </table><br><br><br><br>";
      
