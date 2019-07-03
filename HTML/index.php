@@ -226,7 +226,7 @@ elseif (isset($_REQUEST['Wein,Genus'])) {
 }
 elseif(isset($_POST['suchen'])){
   $suche = $_POST['usereingabe'];
-  $sql = "SELECT TITEL, BILD, INHALT, ERFASST_AM, PREIS_START, ANGEZEIGT_BIS, INSERATE_ID from inserate where INHALT like '%$suche%' or TITEL like '%suche%'";
+  $sql = "SELECT TITEL, BILD, INHALT, ERFASST_AM, PREIS_START, ANGEZEIGT_BIS, INSERATE_ID from inserate where INHALT like '%$suche%' or TITEL like '%$suche%'";
   $meldung = $suche;
   }
   else {
