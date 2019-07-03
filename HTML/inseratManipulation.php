@@ -93,6 +93,7 @@
       cursor: pointer;
         display: block;
         margin: 0 auto;
+
     }
     
     .save
@@ -126,9 +127,16 @@
     
     textarea {
         resize: none;
-        height: 6.15em;
+        height: 8.7em;
     }
     
+    .dropDown
+    {
+        width: 16em;
+        margin:auto;
+        display:block;
+        margin-top: 0.6em;
+    }
 
 
     </style>
@@ -156,6 +164,92 @@
 
         $inserat = mysql_fetch_array($result);
         
+        
+        
+        // Kategorie vorbereiten
+        
+        $drop1 = "";
+        $drop2 = "";
+        $drop3 = "";
+        $drop4 = "";
+        $drop5 = "";
+        $drop6 = "";
+        $drop7 = "";
+        $drop8 = "";
+        $drop9 = "";
+        $drop10 = "";
+        $drop11 = "";
+        $drop12 = "";
+        $drop13 = "";
+        $drop14 = "";
+        $drop15 = "";
+        $drop16 = "";
+        $drop17 = "";
+        $drop18 = "";
+        $drop19 = "";
+        
+        switch ($inserat["KATEGORIE_ID"])
+        {
+            case "1":
+                $drop1 = "selected";
+                break;
+            case "2":
+                $drop2 = "selected";
+                break;
+            case "3":
+                $drop3 = "selected";
+                break;
+            case "4":
+                $drop4 = "selected";
+                break;
+            case "5":
+                $drop5 = "selected";
+                break;
+            case "6":
+                $drop6 = "selected";
+                break;
+            case "7":
+                $drop7 = "selected";
+                break;
+            case "8":
+                $drop8 = "selected";
+                break;
+            case "9":
+                $drop9 = "selected";
+                break;
+            case "10":
+                $drop10 = "selected";
+                break;
+            case "11":
+                $drop11 = "selected";
+                break;
+            case "12":
+                $drop12 = "selected";
+                break;
+            case "13":
+                $drop13 = "selected";
+                break;
+            case "14":
+                $drop14 = "selected";
+                break;
+            case "15":
+                $drop15 = "selected";
+                break;
+            case "16":
+                $drop16 = "selected";
+                break;
+            case "17":
+                $drop17 = "selected";
+                break;
+            case "18":
+                $drop18 = "selected";
+                break;
+            case "19":
+                $drop19 = "selected";
+                break;
+    
+        }
+        
         //**********************************************************************************
     }
     else 
@@ -166,9 +260,33 @@
     }
 ?>
 
+
+
 <form action="inseratVerarbeitung.php" method="post">
     <div class="container-1">
         <div class="box-1">
+            <select class="dropDown" name="kategorie">
+                <option value="">Kategorie</option>
+                <option value="1" <?php echo $drop1; ?> >Antiquitäten</option>
+                <option value="2" <?php echo $drop2; ?> >TV,Video</option>
+                <option value="3" <?php echo $drop3; ?> >Briefmarken</option>
+                <option value="4" <?php echo $drop4; ?> >Bücher</option>
+                <option value="5" <?php echo $drop5; ?> >Computer</option>
+                <option value="6" <?php echo $drop6; ?> >Filme,DVD</option>
+                <option value="7" <?php echo $drop7; ?> >Spielkonsolen</option>
+                <option value="8" <?php echo $drop8; ?> >Smartphones</option>
+                <option value="9" <?php echo $drop9; ?> >Haushalt,Wohnen</option>
+                <option value="10" <?php echo $drop10; ?> >Kleidung</option>
+                <option value="11" <?php echo $drop11; ?> >Freizeit,Hobby</option>
+                <option value="12" <?php echo $drop12; ?> >Musikinstrumente</option>
+                <option value="13" <?php echo $drop13; ?> >Münzen</option>
+                <option value="14" <?php echo $drop14; ?> >Sammeln,Seltenes</option>
+                <option value="15" <?php echo $drop15; ?> >Spielzeug</option>
+                <option value="16" <?php echo $drop16; ?> >Sport</option>
+                <option value="17" <?php echo $drop17; ?> >Tierzubehör</option>
+                <option value="18" <?php echo $drop18; ?> >Schmuck</option>
+                <option value="19" <?php echo $drop19; ?> >Wein,Genus</option>
+            </select>
             <img src='Bilder/Coming-Soon.png'>
             <input class="pic" type=button onClick="location.href='#'" value='BILD AUSWÄHLEN'>
         </div>
@@ -203,7 +321,7 @@
                 <tr>
                     <td>Startpreis:<input type='number' name='startPreis' placeholder='Startpreis*' required style="width: 95%;" value='<?php echo $inserat["PREIS_START"]; ?>'>
                     </td>
-                    <td>Endpreis:<input type='number' name='endPreis' placeholder='Endpreis*' required value='<?php echo $inserat["PREIS_ENDE"]; ?>'>
+                    <td>Sofort kaufen Preis:<input type='number' name='endPreis' placeholder='Sofort kaufen Preis*' required value='<?php echo $inserat["PREIS_ENDE"]; ?>'>
                     </td>
                 </tr>
                 <td colspan="2">

@@ -12,18 +12,30 @@ if (isset($_SESSION["userData"]))
     
     $userData = $_SESSION["userData"];
     
+    $titel = $_POST['titel'];
+    $kategorie = $_POST['kategorie'];
+    $inhalt = $_POST['message'];
+    $preisStart = $_POST['startPreis'];
+    $preisEnde = $_POST['endPreis'];
+    $angezeigtVon = $_POST['vonDatum'];
+    $angezeigtBis = $_POST['bisDatum'];
+    $inseratID = $_POST['inseratID'];
+    
+    
+    
     $eintrag =
     "UPDATE inserate ".
-    "SET TITEL = '" . $_POST['titel'] . "', ".
-    "INHALT = '" . $_POST['message'] . "', ". 
-    "PREIS_START = '" . $_POST['startPreis'] . "', ".
-    "PREIS_ENDE = '" . $_POST['endPreis'] . "', ".
-    "ANGEZEIGT_VON = '" . $_POST['vonDatum'] . "', ".
-    "ANGEZEIGT_BIS = '" . $_POST['bisDatum'] . "' ".
-    "WHERE INSERATE_ID = '" . $_POST['inseratID'] . "'";
+    "SET TITEL = '$titel', ".
+    "KATEGORIE_ID = '$kategorie', ".
+    "INHALT = '$inhalt', ". 
+    "PREIS_START = '$preisStart', ".
+    "PREIS_ENDE = '$preisEnde', ".
+    "ANGEZEIGT_VON = '$angezeigtVon', ".
+    "ANGEZEIGT_BIS = '$angezeigtBis' ".
+    "WHERE INSERATE_ID = '$inseratID' ";
         
 
-    $result = mysql_query($sql);
+    $result = mysql_query($eintrag);
      
     //**********************************************************************************    
 }
