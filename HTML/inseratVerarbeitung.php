@@ -25,10 +25,13 @@ if (isset($_SESSION["userData"]))
     
     if ($inseratID == "neu")
     {
+        $timestamp = time();
+        $datum = date("y.m.d", $timestamp);
+        
         $eintrag = 
         "INSERT INTO inserate ".
         "(TITEL, KATEGORIE_ID, INHALT, PREIS_START, PREIS_ENDE, ANGEZEIGT_VON, ANGEZEIGT_BIS, USER_ID, ERFASST_AM) ".
-        "VALUES ('$titel', '$kategorie', '$inhalt', '$preisStart','$preisEnde', '$angezeigtVon', '$angezeigtBis', '$userID', 'date(\"Y/m/d\")')";
+        "VALUES ('$titel', '$kategorie', '$inhalt', '$preisStart','$preisEnde', '$angezeigtVon', '$angezeigtBis', '$userID', '$datum')";
     }
     else
     {

@@ -251,15 +251,6 @@
                 case "19":
                     $drop19 = "selected";
                     break;
-                    
-            echo $inserat["TITEL"];
-            echo $inserat["INHALT"];
-            echo $inserat["ANGEZEIGT_VON"];
-            echo $inserat["ANGEZEIGT_BIS"];
-            echo $inserat["PREIS_START"];
-            echo $inserat["PREIS_ENDE"];
-            echo $inserat["INSERATE_ID"]; 
-
             }
         }
         else
