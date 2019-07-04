@@ -226,7 +226,7 @@ elseif (isset($_REQUEST['Wein,Genus'])) {
 }
 elseif(isset($_POST['suchen'])){
   $suche = $_POST['usereingabe'];
-  $sql = "SELECT TITEL, BILD, INHALT, ERFASST_AM, PREIS_START, ANGEZEIGT_BIS, INSERATE_ID from inserate where INHALT like '%$suche%' or TITEL like '%$suche%'";
+  $sql = "SELECT TITEL, BILD, INHALT, ERFASST_AM, PREIS_START, ANGEZEIGT_BIS, INSERATE_ID from inserate where TITEL like '%$suche%'";
   $meldung = $suche;
   }
   else {
@@ -270,13 +270,13 @@ if( ! $abfrage)
         $dateformat=date('d.m.Y', strtotime($date));
       echo "<div><article>
 
-                    <h5>" .$zeile["TITEL"] ."</h5>
-                    <p>$bild </p>
+                    <h5 style='font-size:1.2em'>" .$zeile["TITEL"] ."</h5>
+                    <p style ='font-size:0.8em'>$bild </p>
 
-                    <p>" .$zeile["INHALT"] ."</p>
-                    <p>" .$zeile["PREIS_START"] ." CHF</p>
+                    <p style='font-size:0.7em'>" .$zeile["INHALT"] ."</p>
+                    <p style='color:red'>" .$zeile["PREIS_START"] ." CHF</p>
 
-                    <p>Endet am: $dateformat   </p>
+                    <p style='font-size:0.9em'>Endet am: $dateformat   </p>
                     <p><input type=button onClick=\"location.href='inserat.php?id=" . $zeile["INSERATE_ID"] . "'\" value='Zum Inserat'></input></p>
                 </article></div>";
 
