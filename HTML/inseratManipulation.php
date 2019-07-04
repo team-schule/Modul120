@@ -182,7 +182,7 @@
             $sql =
             "SELECT * ".
             "FROM inserate ".
-            "WHERE inserate.USER_ID = " . $_GET["id"] . " LIMIT 1";
+            "WHERE inserate.INSERATE_ID = " . $_GET["id"] . " LIMIT 1";
 
             $result = mysql_query($sql);
 
@@ -251,6 +251,14 @@
                 case "19":
                     $drop19 = "selected";
                     break;
+                    
+            echo $inserat["TITEL"];
+            echo $inserat["INHALT"];
+            echo $inserat["ANGEZEIGT_VON"];
+            echo $inserat["ANGEZEIGT_BIS"];
+            echo $inserat["PREIS_START"];
+            echo $inserat["PREIS_ENDE"];
+            echo $inserat["INSERATE_ID"]; 
 
             }
         }
