@@ -94,12 +94,16 @@
                 display:none;
             }
             #eingeloggt {
+                display:flex;
+                flex-direction:row;
                 list-style:none;
                 position: absolute;
                 top: 20px;
-                left: 1200px;
+                left: 800px;
                 width: 200px;
-                font-size: 120%;
+            }
+            .log {
+                font-size:120%;
             }
         </style>";
     }
