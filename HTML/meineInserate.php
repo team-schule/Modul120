@@ -37,6 +37,24 @@
     input[type=button]:hover {
         background-color: #45a049;
     }
+    
+    #login {
+        display: none;
+    }
+    
+    .log {
+        font-size:120%;
+        background-color: blue;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 4px;
+        width: 200px;
+            }
+    #eingeloggt {
+        width: 500px;
+    }
 
 </style>
 

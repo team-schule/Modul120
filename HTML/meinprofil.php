@@ -83,6 +83,34 @@ $user = $_SESSION["user"];
       font-size: 140%;
       color: rgb(76, 108, 195);
       }
+    #login {
+        display: none;
+    }
+    
+#eingeloggt {
+        display:flex;
+        flex-direction:row;
+        list-style:none;
+        position: absolute;
+        top: 20px;
+        left: 650px;
+        width: 200px;
+        }
+    
+        .log {
+        font-size:120%;
+        background-color: blue;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 4px;
+        width: 200px;
+            }
+    
+    #login {
+        display:none;
+    }
 </style>
 
     <div class="meinprofil">

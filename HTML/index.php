@@ -63,6 +63,8 @@
     }
     #titelkat{
       font-size: 200%;
+        top: 30px;
+        left:5px;
 
     }
     input[type=text]{
@@ -74,7 +76,6 @@
       font-size: 110%;
     }
     
-
 
 
 </style>
@@ -93,35 +94,16 @@
             #login {
                 display:none;
             }
-            #eingeloggt {
-                display:flex;
-                flex-direction:row;
-                list-style:none;
-                position: absolute;
-                top: 20px;
-                left: 800px;
-                width: 200px;
-            }
-            .log {
-                font-size:120%;
-            }
+
         </style>";
     }
     else
     {
         echo "<style>
         
-                #eingeloggt {
+                .log {
                     display:none;
                 }
-                #login {
-                position: absolute;
-                top: 20px;
-                left: 1200px;
-                width: 200px;
-                font-size: 120%;
-            
-        }
         </style>";
     }
 

@@ -43,10 +43,9 @@ include("db.inc.php");
         #login {
             display: none;
         }
-        #eingeloggt {
+        .log {
             display: none;
         }
-
 
     </style>
 

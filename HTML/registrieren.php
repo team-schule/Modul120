@@ -55,7 +55,13 @@ input[type=submit]:hover {
 h5{
   font-size: 150%;
 }
-
+    #login {
+        display: none;
+    }
+    
+    .log {
+        display: none;
+    }
 
 </style>
 

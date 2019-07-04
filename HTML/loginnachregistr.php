@@ -46,6 +46,13 @@ include("db.inc.php");
     font-size: 120%;
   }
 
+        #login {
+            display: none;
+        }
+        
+        .log {
+            display: none;
+        }
 
     </style>
 

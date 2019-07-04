@@ -122,8 +122,47 @@
         border: none;
         border-radius: 1em;
     }
+    #eingeloggt {
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+       margin: auto;
+      
+            }
+    .log {
+        background-color: blue;
+         font-size:120%;
+         width: 200px;
+    }
+    
 
 </style>
+
+<?php
+
+    if (isset($_SESSION["userData"]))
+    {
+        echo
+        "<style>
+            #login {
+                display:none;
+            }
+
+
+        </style>";
+    }
+    else
+    {
+        echo "<style>
+        
+                .log {
+                    display:none;
+                }
+
+        </style>";
+    }
+?>
 
 <!--Inserat-Kopf---------------------------------------------------------------------------------------------->
 <div class="container-1">

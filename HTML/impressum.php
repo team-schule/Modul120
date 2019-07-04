@@ -15,7 +15,13 @@
   .agb h3{
     font-size: 150%;
   }
+    #login {
+        display: none;
+    }
 
+    .log {
+        display: none;
+    }
 </style>
 <div class="agb">
   <h3>Impressum</h3>

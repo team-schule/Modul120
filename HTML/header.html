@@ -11,7 +11,30 @@
 
 <body>
     <style>
-
+                #login {
+                position: absolute;
+                top: 20px;
+                left: 1220px;
+                width: 200px;
+                font-size: 120%;
+            
+        }
+        
+                #eingeloggt {
+                display:flex;
+                flex-direction:row;
+                list-style:none;
+                position: absolute;
+                top: 20px;
+                left: 650px;
+                width: 200px;
+            }
+            .log {
+                font-size:120%;
+                width: 200px;
+                margin: 4px;
+            }
+        
     </style>
     <header>
         <a href="index.php"><img src="Bilder/Logofertig1.png" alt="Logo Tesoro.ch" /></a>
@@ -21,6 +44,7 @@
         
         <div id="eingeloggt">
         <div><input class="log" type=button onClick="location.href='meineInserate.php'" value='Meine Inserate'></div>
+        <div><input class="log" type=button onClick="location.href='inseratManipulation.php?id=neu'" value='Inserat erfassen'></div>
         <div><input class="log" type=button onClick="location.href='meinprofil.php'" value='Profil bearbeiten'></div>
         <div><input class="log" type=button onClick="location.href='logout.php'" value='Abmelden'></div>
         </div>

@@ -31,18 +31,42 @@
     input[type=button]:hover {
         background-color: #45a049;
     }
+    
+    #eingeloggt {
+        display:none;
+    }
+    .log {
+        display: none;
+    }
 
 </style>
 <?php
 
     if (isset($_SESSION["userData"]))
     {
+                echo
+        "<style>
+            #login {
+                display:none;
+            }
+
+        </style>";
+        
         echo "<h3>Sie haben Ihr Gebot erfolgreich abgegeben!</h3>
         <input type=button onClick=\"location.href='index.php'\" value='WEITER EINKAUFEN'>
         <br><br>";
+        
     }
     else
     {
+         echo "<style>
+        
+                .log {
+                    display:none;
+                }
+
+        </style>";
+        
         echo "<h3>Melden Sie sich bitte zuerst an</h3>
         <input type=button onClick=\"location.href='login.php'\" value='ZUR ANMELDUNG'>
         <br><br>";

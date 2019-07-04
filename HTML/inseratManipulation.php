@@ -55,7 +55,9 @@
         border-radius: 1em;
     }
     
-    
+    #login {
+        display: none;
+    }
     
     
     
@@ -139,6 +141,20 @@
     }
 
 
+    .log {
+        font-size:120%;
+        background-color: blue;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        margin: 4px;
+        width: 200px;
+            }
+    
+    #login {
+        display:none;
+    }
     </style>
 
 
