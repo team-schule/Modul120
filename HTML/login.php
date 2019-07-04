@@ -40,6 +40,12 @@ include("db.inc.php");
   .footer{
     height: 100%;
   }
+        #login {
+            display: none;
+        }
+        #eingeloggt {
+            display: none;
+        }
 
 
     </style>

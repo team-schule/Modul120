@@ -72,9 +72,9 @@
       border: solid 3px blue;
       border-radius: 5px;
       font-size: 110%;
-
-
     }
+    
+
 
 
 </style>
@@ -89,19 +89,36 @@
         $userData = $_SESSION["userData"];
 
         echo
-        "<li><p>Willkommen <b>" . $userData["BENUTZERNAME"] . "<b></p>
-            <ul>
-                <li><a href='meineInserate.php'>Meine Inserate</a></li>
-                <li><a href='meinprofil.php'>Profil bearbeiten</a></li>
-                <li><a href='#'>Wunschliste</a></li>
-                <li><a href='#'>Blabla</a></li>
-                <li><a href='logout.php'>Abmelden</a></li>
-            </ul>
-        </li>";
+        "<style>
+            #login {
+                display:none;
+            }
+            #eingeloggt {
+                list-style:none;
+                position: absolute;
+                top: 20px;
+                left: 1200px;
+                width: 200px;
+                font-size: 120%;
+            }
+        </style>";
     }
     else
     {
-        echo "<input type=button onClick=\"location.href='login.php'\" value='Login'>";
+        echo "<style>
+        
+                #eingeloggt {
+                    display:none;
+                }
+                #login {
+                position: absolute;
+                top: 20px;
+                left: 1200px;
+                width: 200px;
+                font-size: 120%;
+            
+        }
+        </style>";
     }
 
     //********************************************************************************************************
