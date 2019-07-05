@@ -75,7 +75,7 @@
       border-radius: 5px;
       font-size: 110%;
     }
-    
+
 
 
 </style>
@@ -96,11 +96,13 @@
             }
 
         </style>";
+        $user = $userData["BENUTZERNAME"];
+        echo "<p style='text-align:right;margin-right:20px; font-size:120%'>Angemeldet als <b> $user</b></p>";
     }
     else
     {
         echo "<style>
-        
+
                 .log {
                     display:none;
                 }

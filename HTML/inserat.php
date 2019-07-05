@@ -11,7 +11,7 @@
     {
         //***********************************************************************************
         // Datenbank Auslesen
-        
+
         $sql =
         "SELECT TITEL, BILD, INHALT, PREIS_START, PREIS_ENDE, ANGEZEIGT_BIS, VORNAME, NACHNAME, BENUTZERNAME, EMAIL, MOBILE, STRASSE, PLZ, ORT ".
         "FROM inserate ".
@@ -22,11 +22,11 @@
         $result = mysql_query($sql);
 
         $inserat = mysql_fetch_array($result);
-        
+
         //***********************************************************************************
 
     }
-    else 
+    else
     {
         echo "<br><br><br><p>Kein Inserat ausgewählt</p>";
         echo "<li><a href='inserat.php?id=" . 1 . "'>Test Inserat-Link</a></li>";
@@ -44,7 +44,7 @@
     .container-1 div {
         /*border: 1px solid;*/
     }
-    
+
     .container-2 {
         margin: 10px;
         border-radius: 10px;
@@ -52,7 +52,7 @@
         /*padding-bottom: 2em;*/
         font-size: 30px;
     }
-    
+
     .container-2 div {
         /*border: 1px solid;*/
     }
@@ -70,11 +70,11 @@
         min-width: 15em;
         padding-left: 1em;
         padding-right: 1em;
-        width: 15em;       
+        width: 15em;
     }
-    
+
     .box-4 {
-        width: 40em;       
+        width: 40em;
     }
 
     h3 {
@@ -85,7 +85,7 @@
         top: 0px;
         font-size: 40px;
     }
-    
+
     input[name=jahr]{
         width: 120px;
         padding: 10px 20px;
@@ -96,7 +96,7 @@
         text-align: right;
         font-size: 30px;
     }
-    
+
     input[type=submit],
     input[type=button]
     {
@@ -108,14 +108,14 @@
       border-radius: 4px;
       cursor: pointer;
     }
-    
+
       input[type=submit]:hover,
       input[type=button]:hover
       {
         background-color: #45a049;
       }
-    
-    
+
+
     .smallBorder{
         height: 0.1em;
         background-color: rgb(59, 172, 183);
@@ -128,14 +128,14 @@
         border-radius: 4px;
         cursor: pointer;
        margin: auto;
-      
+
             }
     .log {
         background-color: blue;
          font-size:120%;
          width: 200px;
     }
-    
+
 
 </style>
 
@@ -151,11 +151,12 @@
 
 
         </style>";
+        
     }
     else
     {
         echo "<style>
-        
+
                 .log {
                     display:none;
                 }
@@ -263,7 +264,7 @@
             <tr>
                 <td colspan="2">
                     Adresse:<br>
-                    <?php echo 
+                    <?php echo
                         $inserat["VORNAME"] . " " . $inserat["NACHNAME"] . "<br>" .
                         $inserat["STRASSE"] . "<br>" .
                         $inserat["PLZ"] . " " . $inserat["ORT"];
@@ -282,7 +283,7 @@
                     Tel:
                 </td>
                 <td>
-                    <?php echo 
+                    <?php echo
                         $inserat["MOBILE"];
                     ?>
                 </td>
@@ -292,7 +293,7 @@
                     Mail:
                 </td>
                 <td>
-                    <?php echo 
+                    <?php echo
                         $inserat["EMAIL"];
                     ?>
                 </td>

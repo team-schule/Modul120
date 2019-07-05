@@ -86,7 +86,7 @@ $user = $_SESSION["user"];
     #login {
         display: none;
     }
-    
+
 #eingeloggt {
         display:flex;
         flex-direction:row;
@@ -96,7 +96,7 @@ $user = $_SESSION["user"];
         left: 650px;
         width: 200px;
         }
-    
+
         .log {
         font-size:120%;
         background-color: blue;
@@ -107,13 +107,17 @@ $user = $_SESSION["user"];
         margin: 4px;
         width: 200px;
             }
-    
+
     #login {
         display:none;
     }
 </style>
 
     <div class="meinprofil">
+      <?php
+      $user = $userData["BENUTZERNAME"];
+      echo "<p style='text-align:right;margin-right:20px; font-size:120%'>Angemeldet als <b> $user</b></p>";
+      ?>
                 <h3>Benutzerkonto</h3>
 
                 <?php

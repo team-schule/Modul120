@@ -37,11 +37,11 @@
     input[type=button]:hover {
         background-color: #45a049;
     }
-    
+
     #login {
         display: none;
     }
-    
+
     .log {
         font-size:120%;
         background-color: blue;
@@ -71,9 +71,9 @@
     {
         //***********************************************************************************
         // Datenbank Auslesen (VARIABELN SIND NOCH FALSCH BENAMST)
-        
+
         $userData = $_SESSION["userData"];
-        
+
         $sql =
         "SELECT * ".
         "FROM inserate ".
@@ -89,12 +89,14 @@
         {
             $katRows[] = $kategorienRows;
         }
-        
+
         //**********************************************************************************
         // Meine Inserate anzeigen
-        
+
         if (count($katRows))
         {
+          $user = $userData["BENUTZERNAME"];
+          echo "<p style='text-align:right;margin-right:20px; font-size:120%'>Angemeldet als <b> $user</b></p>";
             echo "<h3>Meine Inserate</h3>";
 
             foreach($katRows as $key=> $item)
@@ -108,13 +110,13 @@
                     </tr>
                 </table><br>";
             }
-          
+
         }
         else
         {
             echo "<h3>Sie haben noch keine eigenen Inserate</h3>";
         }
-                  
+
         echo
         "<table border='0'>
             <tr>
@@ -122,11 +124,11 @@
                 <td style='width: 10em'><input type=button onClick=\"location.href='inseratManipulation.php?id=neu'\" value='NEU'></td>
             </tr>
         </table><br><br><br><br>";
-     
+
         //***********************************************************************************
 
     }
-    else 
+    else
     {
         echo "<h3>Melden Sie sich bitte zuerst an</h3>
         <input type=button onClick=\"location.href='login.php'\" value='ZUR ANMELDUNG'>
