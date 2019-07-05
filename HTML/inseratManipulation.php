@@ -291,6 +291,7 @@
         else
         {
             $inserat["TITEL"] = '';
+            $inserat["BILD"] = 'Bilder/Coming-Soon.png';
             $inserat["INHALT"] = '';
             $inserat["ANGEZEIGT_VON"] = '';
             $inserat["ANGEZEIGT_BIS"] = '';
