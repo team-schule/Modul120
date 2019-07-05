@@ -155,6 +155,25 @@
     #login {
         display:none;
     }
+    
+    #datausw{
+        position: relative;
+        left: 45px;
+        bottom: 200px;
+        color: transparent;
+         font-size:100%; 
+        background-color: transparent;
+        border: none;
+    }
+    
+    #hochladen{
+        position: relative;
+        left: 15px;
+        bottom: 198px;
+        font-size:105%; 
+        border: none;
+    }
+    
     </style>
 
 
@@ -314,8 +333,9 @@
                 <option value="18" <?php echo $drop18; ?> >Schmuck</option>
                 <option value="19" <?php echo $drop19; ?> >Wein,Genus</option>
             </select>
-            <img src='Bilder/Coming-Soon.png'>
-            <input class="pic" type=button onClick="location.href='#'" value='BILD AUSWÄHLEN'>
+
+            <img src='<?php echo $inserat["BILD"]; ?>'>
+            <input class="pic" type=button  value='BILD AUSWÄHLEN'>     
         </div>
 
         <div class="box-2">
@@ -361,7 +381,6 @@
                 </tr>
             </table>
         </div>
-
     </div>
 
     <div class="container-2">
@@ -373,4 +392,9 @@
     </div>
 </form>
 
+<form id="upload" name="uploadformular" enctype="multipart/form-data" action="dateiupload.php" method="post">
+<input id="datausw" type="file" name="uploaddatei" size="60" maxlength="255">
+<input id="hochladen" type="Submit" name="submit" value="Datei hochladen">
+<input type='hidden' name='inseratID' value='<?php echo $inserat["INSERATE_ID"]; ?>'>
+</form>
 <?php include("footer.html"); ?>

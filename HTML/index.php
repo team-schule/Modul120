@@ -33,7 +33,7 @@
     }
 
     .bildinserat {
-        max-width: 200px;
+        max-width: 100px;
     }
     .kat{
       width: 50px;
@@ -272,25 +272,27 @@ if( ! $abfrage)
 
     while ($zeile = mysql_fetch_array($abfrage))
 		{
-        if (!$zeile["BILD"]){
-            $bild = "Kein Bild vordhanden.";
-        }
-        else
+            if ($zeile["BILD"] == 'Bilder/Coming-Soon.png')
+            {
+                $bild = "Kein Bild vorhanden";
+            }
+        else 
         {
-           $bild = "<img class='bildinserat' src='" .$zeile["BILD"] ."'>";
+           $bild = "<img class='bildinserat' src='" .$zeile["BILD"] ."'>"; 
         }
+           
 
         $date=$zeile['ANGEZEIGT_BIS'];
         $dateformat=date('d.m.Y', strtotime($date));
       echo "<div><article>
 
-                    <h5 style='font-size:1.2em'>" .$zeile["TITEL"] ."</h5>
-                    <p style ='font-size:0.8em'>$bild </p>
+                    <h5 style='font-size:0.9em'>" .$zeile["TITEL"] ."</h5>
+                    <p style ='font-size=0.2em;'>$bild </p>
 
                     <p style='font-size:0.7em'>" .$zeile["INHALT"] ."</p>
                     <p style='color:red'><b>" .$zeile["PREIS_START"] ." CHF</b></p>
 
-                    <p style='font-size:0.9em'>Endet am: $dateformat   </p>
+                    <p style='font-size:0.9em'>Endet am: $dateformat</p>
                     <p><input type=button onClick=\"location.href='inserat.php?id=" . $zeile["INSERATE_ID"] . "'\" value='Zum Inserat'></input></p>
                 </article></div>";
 
