@@ -178,7 +178,7 @@
 
     <div class="box-2">
 
-
+<form action="gebotAbgegeben.php" method="post">
         <table border="0" width="100%">
             <tr>
                 <td colspan="2">
@@ -207,12 +207,12 @@
                 <td colspan="2">Dein Nächstes Gebot</td>
             </tr>
             <tr>
-                <form action="gebotAbgegeben.php" method="post">
+
                 <td colspan="2"><input type='number' name='jahr' min='<?php echo $inserat["PREIS_START"] + 1; ?>' max='<?php echo $inserat["PREIS_ENDE"]; ?>' placeholder='next price*' style='width:100%' value='<?php echo $inserat["PREIS_START"] + 1; ?>'></td>
             </tr>
             <tr>
-                <td colspan="2"><input type="submit" value='GEBOT ABGEBEN'></td>
-              </form>
+                <td colspan="2"><input type="submit" name="gebot" value='GEBOT ABGEBEN'></td>
+
             </tr>
             <tr>
                 <td colspan="2">
@@ -227,12 +227,12 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="2"><input type=button onClick="location.href='gebotAbgegeben.php'" value='SOFORT KAUFEN'></td>
+                <td colspan="2"><input type="submit" name="sofort" value='SOFORT KAUFEN'></td>
             </tr>
         </table>
     </div>
 </div>
-
+</form>
 
 
 <!--Beschreibung---------------------------------------------------------------------------------------------->
