@@ -23,6 +23,10 @@
 
         $inserat = mysql_fetch_array($result);
 
+        $_SESSION["inserat"] = $inserat;
+
+        $_SESSION["inseratid"] = $_GET["id"];
+
         //***********************************************************************************
 
     }
@@ -151,7 +155,7 @@
 
 
         </style>";
-        
+
     }
     else
     {
@@ -203,10 +207,12 @@
                 <td colspan="2">Dein Nächstes Gebot</td>
             </tr>
             <tr>
+                <form action="gebotAbgegeben.php" method="post">
                 <td colspan="2"><input type='number' name='jahr' min='<?php echo $inserat["PREIS_START"] + 1; ?>' max='<?php echo $inserat["PREIS_ENDE"]; ?>' placeholder='next price*' style='width:100%' value='<?php echo $inserat["PREIS_START"] + 1; ?>'></td>
             </tr>
             <tr>
-                <td colspan="2"><input type=button onClick="location.href='gebotAbgegeben.php'" value='GEBOT ABGEBEN'></td>
+                <td colspan="2"><input type="submit" value='GEBOT ABGEBEN'></td>
+              </form>
             </tr>
             <tr>
                 <td colspan="2">
