@@ -58,7 +58,7 @@ h5{
     #login {
         display: none;
     }
-    
+
     .log {
         display: none;
     }
@@ -80,8 +80,8 @@ echo "
 
     <p><input type='radio' name='geschlecht' checked style='margin-left: 80px'> Herr
         <input type='radio' name='geschlecht'> Frau </p>
-    <p><input type='text' name='vorname' placeholder='Vorname*'pattern='[a-zA-Z]{1,}' required> </p>
-    <p><input type='text' name='nachname' placeholder='Nachname*' pattern='[a-zA-Z]{1,}' required> </p>
+    <p><input type='text' name='vorname' placeholder='Vorname*'pattern='[a-zA-Z]{3,}' title='Es sind nur Buchstaben erlaubt,keine Leerzeichen' required> </p>
+    <p><input type='text' name='nachname' placeholder='Nachname*' pattern='[a-zA-Z]{3,}' title='Es sind nur Buchstaben erlaubt,keine Leerzeichen' required> </p>
     <p> <input type='text' name='strasse' placeholder='Strasse*' required > </p>
     <p> <input type='number' name='plz'  min='1000' max='9658' placeholder='PLZ*' required> </p>
     <p> <input type='text' name='ort' placeholder='Ort*'required> </p>
@@ -136,9 +136,10 @@ echo "
         <input type='number' name='jahr' min='1900' max='2019' placeholder='Jahr*' style='width:10em'>
 
 
-    <p> <input type='text' name='benutzername' placeholder='Benutzername*' pattern='[a-zA-Z]{1,}' required size='30'> </p>
-    <p> <input type='email' name='email' placeholder='E-Mail-Adresse*' required size='30'> </p>
-    <p> <input type='password' name='password' placeholder='Passwort*' required size='30'> </p>
+    <p> <input type='text' name='benutzername' placeholder='Benutzername*' pattern='[a-zA-Z0-9]{3,}' title='Es sind nur Buchstaben und Zahlen' required size='30'> </p>
+    <p> <input type='email' name='email' placeholder='E-Mail-Adresse*' pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$' required size='30'> </p>
+    <p> <input type='password' name='password' placeholder='Passwort*' pattern='[a-zA-Z0-9+*%&?!@#]{3,}' title='Es sind nur Buchstaben,Zahlen und Sonderzeigen erlaubt' required size='30'> </p>
+      <p> <input type='password' name='password' placeholder='Passwort wiederholen*' pattern='[a-zA-Z0-9+*%&?!@#]{3,}' title='Es sind nur Buchstaben,Zahlen und Sonderzeigen erlaubt' required size='30'> </p>
     <p> <input type='submit' name='add' value='Abschicken'></p>
 
 </form>";
