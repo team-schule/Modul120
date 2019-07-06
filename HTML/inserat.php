@@ -190,7 +190,7 @@
 <div class="container-1">
 
     <div class="box-1">
-        <img src='Bilder/Coming-Soon.png'>
+        <img src='<?php echo $inserat["BILD"]; ?>'>
     </div>
 
     <div class="box-2">
