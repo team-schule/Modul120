@@ -140,6 +140,9 @@
       margin: 4px;
       width: 200px;
     }
+    .log:hover{
+        background-color: #45a049;
+    }
     #login{
       font-size:120%;
       background-color: blue;
