@@ -16,7 +16,7 @@
 
     .anzeigefeld>div {
         width: 300px;
-        height: 500px;
+        height: 600px;
         background-color: rgba(255, 255, 255, 0.8);
         border: 1px solid black;
         text-align: center;
@@ -33,7 +33,8 @@
     }
 
     .bildinserat {
-        max-width: 100px;
+        max-width: 150px;
+        max-height: 150px;
     }
     .kat{
       width: 50px;
@@ -154,7 +155,7 @@ echo "<input type='button' style='font-size:120%' onClick=location.href='index.p
 echo "</form>";
 echo "</div>";
 
-echo "<div class='anzeigefeld'>";
+echo "<div class='anzeigefeld' style='min-height:1000px;'>";
     ?>
 
 <?php
