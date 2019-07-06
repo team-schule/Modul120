@@ -76,6 +76,17 @@
       border-radius: 5px;
       font-size: 110%;
     }
+    
+    #suchfeld {
+        position:relative;
+        left:80px;
+        width: 1000px;
+    }
+    
+    #suchbutton {
+        position:relative;
+        left:90px;
+    }
 
 
 
@@ -118,8 +129,8 @@
     // Kategorien
     echo "<h4 id='titelkat'>Kategorien</h4>";
     echo "<form action='index.php' method='post'>";
-    echo "<input type='text' name='usereingabe'style='margin-top:5px,padding-left:5px;' placeholder='Suchen.....'>";
-    echo "<input type='submit' style='font-size:130%' name='suchen' value='Suchen'>";
+    echo "<input id='suchfeld' type='text' name='usereingabe'style='margin-top:5px,padding-left:5px;' placeholder='Suchen.....'>";
+    echo "<input id='suchbutton' type='submit' style='font-size:130%' name='suchen' value='Suchen'>";
     echo "</form>";
     echo "<div class='kat'";
 
