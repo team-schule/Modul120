@@ -138,6 +138,7 @@
         margin:auto;
         display:block;
         margin-top: 0.6em;
+        margin-left: 0.5em;
     }
 
 
@@ -158,20 +159,32 @@
     
     #datausw{
         position: relative;
-        left: 45px;
-        bottom: 200px;
-        color: transparent;
-         font-size:100%; 
-        background-color: transparent;
-        border: none;
+        width: 25em;      
+        height: 5em;
+        background-color: rgb(59, 172, 183);
+      color: black;
+        padding: 14px 20px;
+      border-color: black;
+      border-radius: 10px;
+      cursor: pointer;
+        margin: 0 auto;
+        vertical-align: top;
+        margin-left: 1em;
+        bottom: 16.5em;
     }
     
     #hochladen{
         position: relative;
-        left: 15px;
-        bottom: 198px;
-        font-size:105%; 
-        border: none;
+        width: 10em;      
+        height: 5em;
+        background-color: rgb(59, 172, 183);
+      color: black;
+        padding: 14px 20px;
+      border-color: black;
+      border-radius: 10px;
+      cursor: pointer;
+        bottom: 16.5em;
+        margin: 0 auto;
     }
     
     </style>
@@ -349,7 +362,6 @@
             </select>
 
             <img src='<?php echo $inserat["BILD"]; ?>'>
-            <input class="pic" type=button value='BILD AUSWÄHLEN'>
         </div>
 
         <div class="box-2">
@@ -406,10 +418,10 @@
         </div>
     </div>
 </form>
-
 <form id="upload" name="uploadformular" enctype="multipart/form-data" action="dateiupload.php" method="post">
     <input id="datausw" type="file" name="uploaddatei" size="60" maxlength="255">
     <input id="hochladen" type="Submit" name="submit" value="Datei hochladen">
     <input type='hidden' name='inseratID' value='<?php echo $inserat["INSERATE_ID"]; ?>'>
 </form>
+
 <?php include("footer.html"); ?>
