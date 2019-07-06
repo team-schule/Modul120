@@ -101,8 +101,7 @@
         font-size: 30px;
     }
 
-    input[type=submit],
-    input[type=button]
+    #meineinserate
     {
       width: 100%;
       background-color: blue;
@@ -112,12 +111,9 @@
       border-radius: 4px;
       cursor: pointer;
     }
-
-      input[type=submit]:hover,
-      input[type=button]:hover
-      {
-        background-color: #45a049;
-      }
+    #meineinserate:hover{
+      background-color: #45a049;
+    }
 
 
     .smallBorder{
@@ -131,13 +127,31 @@
         border: none;
         border-radius: 4px;
         cursor: pointer;
-       margin: auto;
+        margin: auto;
 
             }
     .log {
-        background-color: blue;
-         font-size:120%;
-         width: 200px;
+      font-size:120%;
+      background-color: blue;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 4px;
+      width: 200px;
+    }
+    #login{
+      font-size:120%;
+      background-color: blue;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 4px;
+      width: 200px;
+    }
+    #login:hover{
+      background-color: #45a049;
     }
 
 
@@ -173,7 +187,7 @@
 <div class="container-1">
 
     <div class="box-1">
-        <img src='<?php echo $inserat["BILD"]; ?>'>
+        <img src='Bilder/Coming-Soon.png'>
     </div>
 
     <div class="box-2">
@@ -211,7 +225,7 @@
                 <td colspan="2"><input type='number' name='jahr' min='<?php echo $inserat["PREIS_START"] + 1; ?>' max='<?php echo $inserat["PREIS_ENDE"]; ?>' placeholder='next price*' style='width:100%' value='<?php echo $inserat["PREIS_START"] + 1; ?>'></td>
             </tr>
             <tr>
-                <td colspan="2"><input type="submit" name="gebot" value='GEBOT ABGEBEN'></td>
+                <td colspan="2"><input type="submit" id='meineinserate' name="gebot" value='GEBOT ABGEBEN'></td>
 
             </tr>
             <tr>
@@ -227,7 +241,7 @@
                 </td>
             </tr>
             <tr>
-                <td colspan="2"><input type="submit" name="sofort" value='SOFORT KAUFEN'></td>
+                <td colspan="2"><input type="submit" id='meineinserate' name="sofort" value='SOFORT KAUFEN'></td>
             </tr>
         </table>
     </div>
