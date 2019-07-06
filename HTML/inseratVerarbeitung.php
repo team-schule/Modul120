@@ -21,6 +21,7 @@ if (isset($_SESSION["userData"]))
     $angezeigtBis = $_POST['bisDatum'];
     $inseratID = $_POST['inseratID'];
     $userID = $userData['USER_ID'];
+    $picID = $_POST['picID'];
     
     
     if ($inseratID == "neu")
@@ -30,8 +31,8 @@ if (isset($_SESSION["userData"]))
         
         $eintrag = 
         "INSERT INTO inserate ".
-        "(TITEL, KATEGORIE_ID, INHALT, PREIS_START, PREIS_ENDE, ANGEZEIGT_VON, ANGEZEIGT_BIS, USER_ID, ERFASST_AM) ".
-        "VALUES ('$titel', '$kategorie', '$inhalt', '$preisStart','$preisEnde', '$angezeigtVon', '$angezeigtBis', '$userID', '$datum')";
+        "(TITEL, KATEGORIE_ID, INHALT, PREIS_START, PREIS_ENDE, ANGEZEIGT_VON, ANGEZEIGT_BIS, USER_ID, ERFASST_AM, BILD) ".
+        "VALUES ('$titel', '$kategorie', '$inhalt', '$preisStart','$preisEnde', '$angezeigtVon', '$angezeigtBis', '$userID', '$datum', '$picID')";
     }
     else
     {
@@ -43,7 +44,8 @@ if (isset($_SESSION["userData"]))
         "PREIS_START = '$preisStart', ".
         "PREIS_ENDE = '$preisEnde', ".
         "ANGEZEIGT_VON = '$angezeigtVon', ".
-        "ANGEZEIGT_BIS = '$angezeigtBis' ".
+        "ANGEZEIGT_BIS = '$angezeigtBis', ".
+        "BILD = '$picID' ".
         "WHERE INSERATE_ID = '$inseratID' ";
     }
 

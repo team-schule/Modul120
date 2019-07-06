@@ -222,6 +222,11 @@
             $result = mysql_query($sql);
 
             $inserat = mysql_fetch_array($result);
+            
+            if (!empty($_GET["picPath"]))
+            {
+                $inserat["BILD"] = $_GET["picPath"];
+            }
 
             //**********************************************************************************
 
@@ -291,13 +296,21 @@
         else
         {
             $inserat["TITEL"] = '';
-            $inserat["BILD"] = 'Bilder/Coming-Soon.png';
             $inserat["INHALT"] = '';
             $inserat["ANGEZEIGT_VON"] = '';
             $inserat["ANGEZEIGT_BIS"] = '';
             $inserat["PREIS_START"] = '';
             $inserat["PREIS_ENDE"] = '';
-            $inserat["INSERATE_ID"] = 'neu';                
+            $inserat["INSERATE_ID"] = 'neu';
+            
+            if (!empty($_GET["picPath"]))
+            {
+                $inserat["BILD"] = $_GET["picPath"];
+            }
+            else
+            {
+                $inserat["BILD"] = "Bilder/Coming-Soon.png";
+            }
         }
     }
     else 
@@ -336,7 +349,7 @@
             </select>
 
             <img src='<?php echo $inserat["BILD"]; ?>'>
-            <input class="pic" type=button  value='BILD AUSWÄHLEN'>     
+            <input class="pic" type=button value='BILD AUSWÄHLEN'>
         </div>
 
         <div class="box-2">
@@ -389,13 +402,14 @@
             <hr class="smallBorder">
             <input class="save" type="submit" value="SPEICHERN">
             <input type='hidden' name='inseratID' value='<?php echo $inserat["INSERATE_ID"]; ?>'>
+            <input type='hidden' name='picID' value='<?php echo $inserat["BILD"]; ?>'>
         </div>
     </div>
 </form>
 
 <form id="upload" name="uploadformular" enctype="multipart/form-data" action="dateiupload.php" method="post">
-<input id="datausw" type="file" name="uploaddatei" size="60" maxlength="255">
-<input id="hochladen" type="Submit" name="submit" value="Datei hochladen">
-<input type='hidden' name='inseratID' value='<?php echo $inserat["INSERATE_ID"]; ?>'>
+    <input id="datausw" type="file" name="uploaddatei" size="60" maxlength="255">
+    <input id="hochladen" type="Submit" name="submit" value="Datei hochladen">
+    <input type='hidden' name='inseratID' value='<?php echo $inserat["INSERATE_ID"]; ?>'>
 </form>
 <?php include("footer.html"); ?>

@@ -16,20 +16,17 @@ if ( $_FILES['uploaddatei']['name']  <> "" )
         echo "<p>Dateitype ist NICHT zugelassen";
     }
     else
-    {   $ablagepfad = "'Bilder/". $_FILES['uploaddatei']['name'] . "'";
+    {   $ablagepfad = "Bilder/". $_FILES['uploaddatei']['name'] . "";
         move_uploaded_file (
              $_FILES['uploaddatei']['tmp_name'] ,
              'Bilder/'. $_FILES['uploaddatei']['name'] );
         
  if (isset($_POST["inseratID"])){
      
-     $inseratid = $_POST["inseratID"];
-     $sql = "UPDATE inserate SET BILD=$ablagepfad where INSERATE_ID = $inseratid ";
-     $result = mysql_query($sql);
-     
+     $inseratid = $_POST["inseratID"];    
     } 
   }
 }
-header("Location: inseratManipulation.php?id=$inseratid");
+header("Location: inseratManipulation.php?id=$inseratid&picPath=$ablagepfad");
 
 ?>
