@@ -24,7 +24,7 @@
     }
 
 
-    input[type=button] {
+    .meineinserate {
         width: 80%;
         background-color: blue;
         color: white;
@@ -106,7 +106,7 @@
                     <tr>
                         <td style='width: 8em'><img src='" . $katRows[$key]["BILD"] . "'></td>
                         <td style='font-size: 1.8em'>" . $katRows[$key]["TITEL"] . "</td>
-                        <td style='width: 10em'><input type=button onClick=\"location.href='inseratManipulation.php?id=" . $katRows[$key]["INSERATE_ID"] . "'\" value='BEARBEITEN'></td>
+                        <td style='width: 10em'><input type=button class='meineinserate' onClick=\"location.href='inseratManipulation.php?id=" . $katRows[$key]["INSERATE_ID"] . "'\" value='BEARBEITEN'></td>
                     </tr>
                 </table><br>";
             }
@@ -121,7 +121,7 @@
         "<table border='0'>
             <tr>
                 <td></td>
-                <td style='width: 10em'><input type=button onClick=\"location.href='inseratManipulation.php?id=neu'\" value='NEU'></td>
+                <td style='width: 10em'><input type=button class='meineinserate' onClick=\"location.href='inseratManipulation.php?id=neu'\" value='NEU'></td>
             </tr>
         </table><br><br><br><br>";
 
